@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="table-header">
+    <p class="table-title">Flights</p>
+    <button class="add-button" mat-mini-fab matTooltip="New room" matTooltipPosition="right" (click)="addFlight()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="destination">
+      <th mat-header-cell *matHeaderCellDef class="cell-center"> Destination </th>
+      <td mat-cell *matCellDef="let flight" class="clickable cell-center" (click)="chooseFlight(flight.id)">{{flight.duration}}</td>
+    </ng-container>
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef class="cell-center"> Duration </th>
+      <td mat-cell *matCellDef="let flight" class="cell-center">{{flight.duration}}</td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef class="cell-center"></th>
+      <td mat-cell *matCellDef="let flight" class="cell-center">
+        <button mat-icon-button (click)="deleteFlight(flight.id)">
+          <mat-icon matTooltip="delete">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
