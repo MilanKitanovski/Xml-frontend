@@ -1,8 +1,10 @@
 <mat-card>
-  <mat-card-title>Flight {{flight?.id}}</mat-card-title>
+  <mat-card-title>Flight Id: {{flight?.id}}</mat-card-title>
   <mat-card-content>
-    <p>airportDeparture: {{flight?.airportDeparture}}</p>
-    <p>destination: {{flight?.duration}}</p>
-    <p>departureTime: {{flight?.departureTime}}</p>
+    <p>From: {{flight?.airportDeparture}}</p>
+    <p>To: {{flight?.airportDestination}}</p>
+    <p>Date and time: {{flight?.departureTime}}</p>
+    <p>Duration: {{flight?.duration}}</p>
+    <p>Ticket price: {{flight?.ticketPrice}}</p>
   </mat-card-content>
 </mat-card>

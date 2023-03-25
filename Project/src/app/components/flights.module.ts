@@ -6,17 +6,19 @@ import { MaterialModule } from "src/app/material/material.module";
 
 import { FlightsViewComponent } from './flights-view/flights-view.component';
 import { FlightInfoComponent } from './flight-info/flight-info.component';
+import { FlightCreateComponent } from './flight-create/flight-create.component';
 
 const routes: Routes = [
   { path: 'flights', component: FlightsViewComponent },
- // { path: 'flights/add', component: CreateRoomComponent },
+  { path: 'flights/add', component: FlightCreateComponent },
   { path: 'flights/:id', component: FlightInfoComponent },
 ];
 
 @NgModule({
   declarations: [
     FlightsViewComponent,
-    FlightInfoComponent
+    FlightInfoComponent,
+    FlightCreateComponent
   ],
   imports: [
     CommonModule,

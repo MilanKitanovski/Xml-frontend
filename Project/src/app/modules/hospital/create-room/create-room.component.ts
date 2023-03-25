@@ -19,6 +19,7 @@ export class CreateRoomComponent {
     this.roomService.createRoom(this.room).subscribe(res => {
       this.router.navigate(['/rooms']);
     });
+
   }
 
   private isValidInput(): boolean {
