@@ -9,11 +9,13 @@ import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { FlightsModule } from "./components/flights.module";
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginpageComponent
+    LoginpageComponent,
   ],
     imports: [
         BrowserModule,
@@ -23,7 +25,8 @@ import {ReactiveFormsModule} from "@angular/forms";
         MaterialModule,
         PagesModule,
         HospitalModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FlightsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

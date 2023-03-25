@@ -1,0 +1,32 @@
+<div class="container">
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Destination</mat-label>
+      <input matInput [(ngModel)]="flight.airportDestination">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Departure</mat-label>
+      <input matInput [(ngModel)]="flight.airportDeparture">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>departure Time</mat-label>
+      <input matInput [(ngModel)]="flight.departureTime">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>duration</mat-label>
+      <input matInput [(ngModel)]="flight.duration">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>ticket Price</mat-label>
+      <input matInput [(ngModel)]="flight.ticketPrice">
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+      <mat-label>capacity</mat-label>
+      <input matInput [(ngModel)]="flight.capacity">
+    </mat-form-field><br>
+    <button mat-stroked-button (click)="createFlight()">
+      Submit
+    </button>
+  </div>
+</div>
