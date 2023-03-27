@@ -1,16 +1,11 @@
 <div class="container">
   <div class="table-header">
-    <p class="table-title">Flights</p>
-    <button class="add-button" mat-mini-fab matTooltip="New flight" matTooltipPosition="right" (click)="addFlight()">
-      <mat-icon>add</mat-icon>
+    <p class="table-title">Available flights</p>
+    <button class="add-button" mat-mini-fab matTooltip="Your tickets" matTooltipPosition="right" (click)="tickets()">
+      <mat-icon>tickets</mat-icon>
     </button>
   </div>
   <table mat-table [dataSource]="dataSource">
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef class="cell-center"> Id </th>
-        <td mat-cell *matCellDef="let flight" class="clickable cell-center" (click)="chooseFlight(flight.id)">
-          {{flight.id}}</td>
-      </ng-container>
     <ng-container matColumnDef="departure">
       <th mat-header-cell *matHeaderCellDef class="cell-center"> DEPARTURE </th>
       <td mat-cell *matCellDef="let flight" class="cell-center">{{flight.airportDeparture}}</td>
@@ -32,14 +27,7 @@
       <th mat-header-cell *matHeaderCellDef class="cell-center"> PRICE </th>
       <td mat-cell *matCellDef="let flight" class="cell-center">{{flight.ticketPrice}}$</td>
     </ng-container>
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef class="cell-center"></th>
-      <td mat-cell *matCellDef="let flight" class="cell-center">
-        <button mat-icon-button (click)="deleteFlight(flight.id)">
-          <mat-icon matTooltip="delete">delete</mat-icon>
-        </button>
-      </td>
-    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
