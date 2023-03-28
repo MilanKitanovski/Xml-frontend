@@ -1,28 +1,28 @@
 <div class="container">
   <div>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline" >
       <mat-label>Destination</mat-label>
       <input matInput [(ngModel)]="flight.airportDestination">
     </mat-form-field><br>
-    <mat-form-field appearance="fill">
-      <mat-label>Departure</mat-label>
-      <input matInput [(ngModel)]="flight.airportDeparture">
+    <mat-form-field  appearance="outline" class="fields" >
+      <mat-label class="fields" >Departure</mat-label>
+      <input class="fields"  matInput [(ngModel)]="flight.airportDeparture">
     </mat-form-field><br>
-    <mat-form-field appearance="fill">
-      <mat-label>departure Time</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Date & time</mat-label>
       <input matInput [(ngModel)]="flight.departureTime">
     </mat-form-field><br>
-    <mat-form-field appearance="fill">
-      <mat-label>duration</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Duration</mat-label>
       <input matInput [(ngModel)]="flight.duration">
     </mat-form-field><br>
-    <mat-form-field appearance="fill">
-      <mat-label>ticket Price</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Ticket price</mat-label>
       <input matInput [(ngModel)]="flight.ticketPrice">
     </mat-form-field><br>
 
-    <mat-form-field appearance="fill">
-      <mat-label>capacity</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Available seats</mat-label>
       <input matInput [(ngModel)]="flight.capacity">
     </mat-form-field><br>
     <button mat-stroked-button (click)="createFlight()">

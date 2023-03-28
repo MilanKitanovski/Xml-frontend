@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import {Flight} from "../../model/flight";
-
+import {Ticket} from "../../model/ticket";
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -22,6 +22,11 @@ export class FlightServiceService {
     );
   }
 
+  getAvailableFlights(): Observable<Flight[]> {
+    return this.http.get<Flight[]>(this.apiHost + '/available', {headers: this.headers}).pipe(
+      catchError(this.handleError)
+    );
+  }
   private handleError(err: any) {
     let errorMessage: string;
     if (err.error instanceof ErrorEvent) {
@@ -72,4 +77,6 @@ export class FlightServiceService {
       catchError(this.handleError)
     );
   }
+
+
 }
