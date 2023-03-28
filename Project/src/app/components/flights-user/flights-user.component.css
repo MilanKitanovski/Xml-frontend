@@ -48,3 +48,8 @@ p {
   float: left;
   margin-right: auto;
 }
+
+.inputQuantity{
+
+  padding: 5%;
+}

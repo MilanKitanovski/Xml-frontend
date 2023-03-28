@@ -6,6 +6,9 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {TicketServiceService} from "../../service/flightService/ticket-service.service";
+import {TicketDto} from "../../model/ticketDto";
+import {Ticket} from "../../model/ticket";
+import {throwDialogContentAlreadyAttachedError} from "@angular/cdk/dialog";
 
 @Component({
   selector: 'app-flights-user',
@@ -17,10 +20,14 @@ export class FlightsUserComponent implements OnInit {
   pageTitle = 'Flights List';
   errorMessage = '';
   public dataSource = new MatTableDataSource<Flight>();
-  public displayedColumns = ['destination', 'departure' ,'departureTime', 'duration', 'ticketPrice'];
+  public displayedColumns = ['destination', 'departure' ,'departureTime', 'duration', 'ticketPrice', 'buy'];
   public flights: Flight[] = [];
-  amount: any;
+
+  public ticket: Ticket = new Ticket();
+  public ticketDto: TicketDto = new TicketDto();
+
   public userId: string | undefined;
+
 
 
   constructor(private flightService: FlightServiceService, private ticketService: TicketServiceService, private router: Router) { }
@@ -47,7 +54,43 @@ export class FlightsUserComponent implements OnInit {
   public tickets() {
     this.router.navigate(['/tickets/' + this.userId]);
   }
+  private isValidInput(): boolean {
+    if(this.ticketDto?.amount < 1){
 
+      alert('You must enter non-zero value for quantity!');
+      return false;
+    }
+    else return true;
+  }
   public buyTicket(id: any){
+    if (!this.isValidInput()) return;
+    this.ticketDto.flightId = id;
+    this.ticketDto.userId = "user677";
+
+    this.ticket.flightId =id;
+    this.ticket.userId =  "user677";
+
+    if(this.ticketDto.amount == 1){
+      this.ticketService.buyOne(this.ticket).subscribe({
+        next: res => {
+          console.log(res);
+        },
+        error: err => {
+          console.log(err);
+        }
+      });
+    } else {
+      this.ticketService.buyMultiple(this.ticketDto).subscribe({
+        next: res => {
+          console.log(res);
+        },
+        error: err => {
+          console.log(err);
+        }
+        }
+
+      );
+    }
+
   }
 }

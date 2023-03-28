@@ -5,13 +5,16 @@ import {Flight} from "../../model/flight";
 import {Ticket} from "../../model/ticket";
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import {TicketCreate} from "../../model/ticketCreate";
+import {getXHRResponse} from "rxjs/internal/ajax/getXHRResponse";
 @Injectable({
   providedIn: 'root'
 })
 export class TicketServiceService {
 
 
-  apiHost: string = 'https://localhost:5001/ticket';
+  ticketCreate: TicketCreate= new TicketCreate();
+  apiHost: string = 'https://localhost:5001/api/ticket';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -24,15 +27,19 @@ export class TicketServiceService {
   }
 
   buyOne(ticket: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + '/buy/'+ ticket.flightId, ticket, {headers: this.headers}).pipe(
-      catchError(this.handleError)
-    );
+
+    console.log(ticket);
+    return this.http.post<any>('https://localhost:5001/api/ticket/buy/'+
+      ticket.flightId, ticket,
+      {headers: this.headers});
   }
 
   buyMultiple(ticketDto: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + '/buymultiple/'+ ticketDto.flightId, ticketDto, {headers: this.headers}).pipe(
+    console.log(ticketDto);
+    return this.http.post<any>( 'https://localhost:5001/api/ticket/buymultiple/'+ ticketDto.flightId, ticketDto, {headers: this.headers}).pipe(
       catchError(this.handleError)
     );
+
   }
 
   private handleError(err: any) {

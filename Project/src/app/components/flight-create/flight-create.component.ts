@@ -15,6 +15,7 @@ export class FlightCreateComponent implements OnInit {
 
   public createFlight(){
     if (!this.isValidInput()) return;
+
     this.flightServiceService.createFlight(this.flight).subscribe(res => {
       this.router.navigate(['/flights']);
     });
@@ -22,7 +23,11 @@ export class FlightCreateComponent implements OnInit {
    // console.log(this.flight);
   }
   private isValidInput(): boolean {
-    return this.flight?.airportDeparture != '' && this.flight?.duration.toString() != '';
+    return this.flight?.airportDeparture != ''
+      && this.flight?.duration.toString() != ''
+      && this.flight?.ticketPrice.toString() != ''
+      && this.flight?.capacity.toString() != ''
+      && this.flight?.airportDestination!= '';
   }
   ngOnInit(): void {
   }
