@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {FlightServiceService} from "../../../service/flightService/flight-service.service";
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,20 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  flights: any = [];
+  constructor(private router: Router, private flightService: FlightServiceService) { }
 
   ngOnInit(): void {
+
+    this.flightService.getAvailableFlights().subscribe((data) => {
+      this.flights = data;
+    });
   }
 
   goToFlights() {
     this.router.navigate(["/flights"]).then();
+  }
+  onClick(path: string) {
+    this.router.navigate([`/${path}`]);
   }
 }

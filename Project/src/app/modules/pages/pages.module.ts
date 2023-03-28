@@ -1,15 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppRoutingModule } from 'src/app/app-routing.module'; 
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './home/footer/footer.component';
+import { CarouselComponent } from './home/carousel/carousel.component';
+import { OurServicesComponent } from './home/our-services/our-services.component';
+import {MatIconModule} from "@angular/material/icon";
+import {FlightsModule} from "../../components/flights.module";
+import { FlightsHomepageComponent } from './home/flights-homepage/flights-homepage.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
     HomeComponent,
+    FooterComponent,
+    CarouselComponent,
+    OurServicesComponent,
+    FlightsHomepageComponent,
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
+    MatIconModule,
+    FlightsModule,
+    MatTableModule,
+    MatFormFieldModule,
   ]
 })
 export class PagesModule { }

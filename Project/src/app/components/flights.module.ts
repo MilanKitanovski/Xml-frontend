@@ -33,6 +33,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  exports: [ RouterModule ]
+    exports: [RouterModule, FlightsUserComponent]
 })
 export class FlightsModule { }
