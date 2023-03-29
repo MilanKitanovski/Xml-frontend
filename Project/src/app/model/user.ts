@@ -10,5 +10,4 @@ export interface User{
   city: string,
   country: string,
   mobile: string,
-  userType: string,
 }

@@ -10,12 +10,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { FlightsModule } from "./components/flights.module";
-
+import {UserRegisterComponent} from "./components/user-register/user-register.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginpageComponent,
+    UserRegisterComponent
   ],
     imports: [
         BrowserModule,
