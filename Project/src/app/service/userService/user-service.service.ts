@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/model/user';
 import { SignInRequestPayload } from 'src/app/components/loginpage/login-request';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 
-  baseUrl = 'http://localhost:8080'
+  baseUrl = 'http://localhost:5001'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,7 +20,9 @@ export class UserServiceService {
     return this.httpClient.get<User>(this.baseUrl + '/api/users' + email );
   }
 
-
+  Registration(user : User) : Observable<any> {
+    return this.httpClient.post<User>('https://localhost:5001/api/user/register',user);
+  }
 
   findAll(): Observable<User[]>{
     let headers = new HttpHeaders({
