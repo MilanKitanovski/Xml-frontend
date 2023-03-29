@@ -3,13 +3,11 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { MaterialModule } from "src/app/material/material.module";
-
 import { FlightsViewComponent } from './flights-view/flights-view.component';
 import { FlightInfoComponent } from './flight-info/flight-info.component';
 import { FlightCreateComponent } from './flight-create/flight-create.component';
 import { FlightsUserComponent } from './flights-user/flights-user.component';
 import { TicketsViewComponent } from './tickets-view/tickets-view.component';
-import { UserRegisterComponent } from './user-register/user-register.component';
 
 const routes: Routes = [
   { path: 'flights', component: FlightsViewComponent },
@@ -26,7 +24,6 @@ const routes: Routes = [
     FlightCreateComponent,
     FlightsUserComponent,
     TicketsViewComponent,
-    UserRegisterComponent,
   ],
   imports: [
     CommonModule,
