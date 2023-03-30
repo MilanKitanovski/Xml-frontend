@@ -22,15 +22,14 @@ export class TicketsViewComponent implements OnInit {
   public userId: string = "user677";
   public dataSource  = new MatTableDataSource<Ticket>();
   public tickets: Ticket[] = [];
+  public flight: Flight = new Flight();
 
-
-  constructor(private ticketService: TicketServiceService, private route: Router) { }
+  constructor(private ticketService: TicketServiceService,private flightService: FlightServiceService, private route: Router) { }
 
   ngOnInit(): void {
      this.ticketService.getTickets(this.userId).subscribe(res => {
       this.tickets = res;
       this.dataSource.data = this.tickets;
-
     })
   }
 

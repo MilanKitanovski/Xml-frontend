@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'HospitalFront';
+/*
+  private userSub: Subscription;
+  isLogged = false
+
+  constructor(private authService: AuthService){}
+
+  ngOnInit(): void {
+    this.authService.autoLogin()
+    this.userSub = this.authService.user.subscribe(user =>{
+      this.isLogged = !!user
+    });
+  } */
 }

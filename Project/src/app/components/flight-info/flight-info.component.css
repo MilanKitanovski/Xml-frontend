@@ -1,7 +1,9 @@
 mat-card {
-  width: 40%;
+  width: 50%;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 200px;
+  margin-left: 325px;
+  margin-bottom: 200px;
   border-radius: 3px;
   border: #DCD6CC 1px solid;
   background-color: #f5f6f6;
@@ -10,6 +12,6 @@ mat-card {
 
 mat-card-title {
   margin-bottom: 30px;
-  color: #005d5d;
+  color: #261867;
   font-family: "Modern No. 20";
 }

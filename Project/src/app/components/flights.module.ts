@@ -8,6 +8,9 @@ import { FlightInfoComponent } from './flight-info/flight-info.component';
 import { FlightCreateComponent } from './flight-create/flight-create.component';
 import { FlightsUserComponent } from './flights-user/flights-user.component';
 import { TicketsViewComponent } from './tickets-view/tickets-view.component';
+import {PagesModule} from "../modules/pages/pages.module";
+
+
 
 const routes: Routes = [
   { path: 'flights', component: FlightsViewComponent },
@@ -23,14 +26,16 @@ const routes: Routes = [
     FlightInfoComponent,
     FlightCreateComponent,
     FlightsUserComponent,
-    TicketsViewComponent,
+    TicketsViewComponent
+
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    PagesModule
   ],
     exports: [RouterModule, FlightsUserComponent]
 })

@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { FlightsModule } from "./components/flights.module";
 import {UserRegisterComponent} from "./components/user-register/user-register.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import {UserRegisterComponent} from "./components/user-register/user-register.co
         HospitalModule,
         ReactiveFormsModule,
         FlightsModule
+
     ],
   providers: [],
   bootstrap: [AppComponent]
