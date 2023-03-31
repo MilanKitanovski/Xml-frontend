@@ -22,6 +22,9 @@ import {FormsModule} from "@angular/forms";
     OurServicesComponent,
     UserProfileComponent
   ],
+  exports: [
+    FooterComponent
+  ],
   imports: [
     CommonModule,
     AppRoutingModule,

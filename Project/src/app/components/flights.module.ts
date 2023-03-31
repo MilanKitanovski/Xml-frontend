@@ -13,6 +13,7 @@ import { SearchFlightComponent } from './search-flight/search-flight.component';
 import { SearchResponseComponent } from './search-response/search-response.component';
 import {FlightsHomepageComponent} from "../modules/pages/home/flights-homepage/flights-homepage.component";
 import {NavbarComponent} from "../modules/pages/user-profile/navbar/navbar.component";
+import {FooterComponentComponent} from "./footer-component/footer-component.component";
 
 
 
@@ -35,7 +36,8 @@ const routes: Routes = [
     SearchFlightComponent,
     SearchResponseComponent,
     FlightsHomepageComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponentComponent
 
   ],
   imports: [
