@@ -7,6 +7,8 @@ import {FlightServiceService} from "../../../../service/flightService/flight-ser
 import {TicketServiceService} from "../../../../service/flightService/ticket-service.service";
 import {Router} from "@angular/router";
 import {throwError} from "rxjs";
+import {SearchRequestDto} from "../../../../model/searchRequestDto";
+import {SearchResponseDto} from "../../../../model/searchResponseDto";
 
 @Component({
   selector: 'app-flights-homepage',
@@ -19,7 +21,6 @@ export class FlightsHomepageComponent implements OnInit {
   public dataSource = new MatTableDataSource<Flight>();
   public displayedColumns = ['destination', 'departure' ,'departureTime', 'duration', 'ticketPrice'];
   public flights: Flight[] = [];
-
   public userId: string | undefined;
 
   constructor(private flightService: FlightServiceService) { }
@@ -30,6 +31,7 @@ export class FlightsHomepageComponent implements OnInit {
       this.dataSource.data = this.flights;
     })
   };
+
 
 
 }

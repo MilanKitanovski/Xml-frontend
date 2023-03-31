@@ -1,11 +1,14 @@
+
 .container {
   width: 60%;
   margin: auto;
-  margin-top: 100px;
-  margin-bottom: 200px;
+  margin-top: 120px;
   border-radius: 3px;
   border:  #DCD6CC 1px solid;
-  background-color: #ffffff;
+  background-color: #b9bdbd;
+  margin-bottom: 200px;
+
+  align-items: end;
 }
 
 table {
@@ -18,18 +21,11 @@ table {
   padding-bottom: 20px;
   padding-top: 20px;
   padding-left: 20px;
-  font-size: 28px;
-  color: blue;
+  font-size: 23px;
+  color: #261867;
   font-family: "Modern No. 20";
 }
 
-.ticketAmount{
-  font-size: 14px;
-  color: blue;
-  font-family: "Modern No. 20";
-  margin-right: 10px;
-
-}
 .cell-center {
   text-align: center;
 }
@@ -42,7 +38,7 @@ table {
 .add-button {
   margin: 10px 20px 10px 10px;
   color: black;
-  background-color: #a5bce5;
+  background-color: #6586b9;
   float: right;
 }
 
@@ -56,12 +52,4 @@ p {
   float: left;
   margin-right: auto;
 }
-
-.inputQuantity{
-
-  padding: 5%;
-}
-
-
-
 

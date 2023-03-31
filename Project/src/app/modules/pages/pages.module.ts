@@ -12,6 +12,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { UserProfileComponent } from './user-profile/user-profile/user-profile.component';
 import { NavbarComponent } from './user-profile/navbar/navbar.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,12 +20,7 @@ import { NavbarComponent } from './user-profile/navbar/navbar.component';
     FooterComponent,
     CarouselComponent,
     OurServicesComponent,
-    FlightsHomepageComponent,
-    UserProfileComponent,
-    NavbarComponent,
-  ],
-  exports: [
-    NavbarComponent
+    UserProfileComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +28,8 @@ import { NavbarComponent } from './user-profile/navbar/navbar.component';
     MatIconModule,
     MatTableModule,
     MatFormFieldModule,
+    FormsModule,
+    FlightsModule
   ]
 })
 export class PagesModule { }

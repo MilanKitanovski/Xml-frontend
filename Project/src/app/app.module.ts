@@ -29,7 +29,6 @@ import {UserRegisterComponent} from "./components/user-register/user-register.co
         HospitalModule,
         ReactiveFormsModule,
         FlightsModule
-
     ],
   providers: [],
   bootstrap: [AppComponent]

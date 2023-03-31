@@ -9,6 +9,10 @@ import { FlightCreateComponent } from './flight-create/flight-create.component';
 import { FlightsUserComponent } from './flights-user/flights-user.component';
 import { TicketsViewComponent } from './tickets-view/tickets-view.component';
 import {PagesModule} from "../modules/pages/pages.module";
+import { SearchFlightComponent } from './search-flight/search-flight.component';
+import { SearchResponseComponent } from './search-response/search-response.component';
+import {FlightsHomepageComponent} from "../modules/pages/home/flights-homepage/flights-homepage.component";
+import {NavbarComponent} from "../modules/pages/user-profile/navbar/navbar.component";
 
 
 
@@ -17,7 +21,8 @@ const routes: Routes = [
   { path: 'flights/add', component: FlightCreateComponent },
   { path: 'flights/:id', component: FlightInfoComponent },
   { path: 'flights/user/:userId', component: FlightsUserComponent},
-  { path: 'tickets/:userId', component: TicketsViewComponent},
+  { path: 'tickets/:userId', component: TicketsViewComponent}
+
 ];
 
 @NgModule({
@@ -26,7 +31,11 @@ const routes: Routes = [
     FlightInfoComponent,
     FlightCreateComponent,
     FlightsUserComponent,
-    TicketsViewComponent
+    TicketsViewComponent,
+    SearchFlightComponent,
+    SearchResponseComponent,
+    FlightsHomepageComponent,
+    NavbarComponent
 
   ],
   imports: [
@@ -34,9 +43,8 @@ const routes: Routes = [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    PagesModule
+    RouterModule.forChild(routes)
   ],
-    exports: [RouterModule, FlightsUserComponent]
+  exports: [RouterModule, FlightsUserComponent, SearchFlightComponent, FlightsHomepageComponent, NavbarComponent]
 })
 export class FlightsModule { }

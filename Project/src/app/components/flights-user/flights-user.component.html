@@ -42,7 +42,12 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
   <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}
   </div>
 </div>
+<section>
+
+  <div class="search">
+    <app-search-flight></app-search-flight>
+  </div>
+</section>
