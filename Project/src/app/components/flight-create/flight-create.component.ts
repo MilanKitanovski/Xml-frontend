@@ -18,9 +18,6 @@ export class FlightCreateComponent implements OnInit {
     this.flightServiceService.createFlight(this.flight).subscribe(res => {
       this.router.navigate(['/flights']);
     });
-
-
-   // console.log(this.flight);
   }
   private isValidInput(): boolean {
     return this.flight?.airportDeparture != ''

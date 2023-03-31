@@ -15,7 +15,6 @@ import {FlightInfoComponent} from "../flight-info/flight-info.component";
 export class FlightsViewComponent implements OnInit {
 
   pageTitle = 'Flights List';
-  filteredFlights: Flight[] = [];
   errorMessage = '';
   public dataSource = new MatTableDataSource<Flight>();
   public displayedColumns = ['id', 'destination', 'departure' ,'departureTime', 'duration', 'ticketPrice', 'delete'];
@@ -33,14 +32,7 @@ export class FlightsViewComponent implements OnInit {
   public chooseFlight(id: string) {
     this.router.navigate(['/flights/', id]);
   }
-/*
-  openDialog(id: string): void {
-    let dialogRef = this.dialog.open(FlightInfoComponent, {
-      width: '300px',
-      data: { id: id }
-    });
 
-  } */
   public deleteFlight(id: number) {
     this.flightService.deleteFlight(id).subscribe(res => {
       this.flightService.getFlights().subscribe(res => {
@@ -53,21 +45,6 @@ export class FlightsViewComponent implements OnInit {
   public addFlight() {
     this.router.navigate(['/flights/add']);
   }
-
-/*
-  _listFilter = '';
-  get listFilter(): string {
-    return this._listFilter;
-  }
-  set listFilter(value: string) {
-    this._listFilter = value;
-    this.filteredFlights = this.listFilter ? this.performFilter(this.listFilter) : this.employees;
-  }
-  performFilter(filterBy: string): Flight[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.flights.filter((flight: Flight) =>
-      flight.airportDestination.toLocaleLowerCase().indexOf(filterBy) !== -1);
-  }*/
 
 
 }

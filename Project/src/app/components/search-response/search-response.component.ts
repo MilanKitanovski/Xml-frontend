@@ -15,7 +15,7 @@ export class SearchResponseComponent implements OnInit {
   public dataSource = new MatTableDataSource<SearchResponseDto>();
   public displayedColumns = ['ticketPrice', 'destination', 'departure' ,'departureTime', 'duration', 'totalPrice'];
 
-  constructor(private flightService: FlightServiceService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.dataSource= this.flights;

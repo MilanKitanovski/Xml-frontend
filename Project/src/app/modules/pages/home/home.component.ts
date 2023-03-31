@@ -19,9 +19,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  goToFlights() {
-    this.router.navigate(["/flights"]).then();
-  }
   onClick(path: string) {
     this.router.navigate([`/${path}`]);
   }
