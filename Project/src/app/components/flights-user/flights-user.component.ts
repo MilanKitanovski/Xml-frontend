@@ -74,6 +74,7 @@ export class FlightsUserComponent implements OnInit {
       this.ticketService.buyOne(this.ticket).subscribe({
         next: res => {
           console.log(res);
+          alert('You just bought one ticket with  '+ this.ticket.flightId+ '  id. Go to ticket page to see all your tickets!');
         },
         error: err => {
           console.log(err);
@@ -83,6 +84,8 @@ export class FlightsUserComponent implements OnInit {
       this.ticketService.buyMultiple(this.ticketDto).subscribe({
         next: res => {
           console.log(res);
+          alert('You just bought '+ this.ticketDto.amount + ' tickets with  '+ this.ticket.flightId+ '  id. Go to ticket page to see all your tickets!');
+
         },
         error: err => {
           console.log(err);

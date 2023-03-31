@@ -5,12 +5,14 @@ import {Flight} from "../../model/flight";
 import {Ticket} from "../../model/ticket";
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import {SearchResponseDto} from "../../model/searchResponseDto";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlightServiceService {
 
+  public searchResponse: any[] = [];
   apiHost: string = 'http://localhost:5000/flight';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -78,5 +80,20 @@ export class FlightServiceService {
     );
   }
 
+  getSearchResponse() {
+    return this.searchResponse;
+  }
+  updateSearchResponse(newList: any[]) {
+    this.searchResponse = newList;
+  }
 
+    search(searchRequestDto: any):
+      Observable<any> {
+
+      return this.http.get<any>(this.apiHost + '/search'+'/'
+        + searchRequestDto.airportDestination+'/'
+        + searchRequestDto.airportDeparture +'/'
+        + searchRequestDto.departureTime+'/'
+        + searchRequestDto.numPassengers, {headers: this.headers});
+    }
 }

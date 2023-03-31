@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Flight} from "../../model/flight";
 import {FlightServiceService} from "../../service/flightService/flight-service.service";
 import {Router} from "@angular/router";
-
 @Component({
   selector: 'app-flight-create',
   templateUrl: './flight-create.component.html',
@@ -14,11 +13,12 @@ export class FlightCreateComponent implements OnInit {
   constructor(private  flightServiceService: FlightServiceService, private router: Router) { }
 
   public createFlight(){
-    if (!this.isValidInput()) return;
+    if (!this.isValidInput()) return alert('invalid input');
 
     this.flightServiceService.createFlight(this.flight).subscribe(res => {
       this.router.navigate(['/flights']);
     });
+
 
    // console.log(this.flight);
   }

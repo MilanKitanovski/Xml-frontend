@@ -5,6 +5,8 @@ import { Flight } from "../../model/flight";
 import { FlightServiceService } from '../../service/flightService/flight-service.service';
 import {FlightsModule} from "../flights.module";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {FlightInfoComponent} from "../flight-info/flight-info.component";
+
 @Component({
   selector: 'app-flights-view',
   templateUrl: './flights-view.component.html',
@@ -31,8 +33,14 @@ export class FlightsViewComponent implements OnInit {
   public chooseFlight(id: string) {
     this.router.navigate(['/flights/', id]);
   }
+/*
+  openDialog(id: string): void {
+    let dialogRef = this.dialog.open(FlightInfoComponent, {
+      width: '300px',
+      data: { id: id }
+    });
 
-
+  } */
   public deleteFlight(id: number) {
     this.flightService.deleteFlight(id).subscribe(res => {
       this.flightService.getFlights().subscribe(res => {

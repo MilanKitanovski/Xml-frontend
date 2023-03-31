@@ -10,6 +10,9 @@ import {FlightsModule} from "../../components/flights.module";
 import { FlightsHomepageComponent } from './home/flights-homepage/flights-homepage.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { UserProfileComponent } from './user-profile/user-profile/user-profile.component';
+import { NavbarComponent } from './user-profile/navbar/navbar.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -17,15 +20,16 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     FooterComponent,
     CarouselComponent,
     OurServicesComponent,
-    FlightsHomepageComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     MatIconModule,
-    FlightsModule,
     MatTableModule,
     MatFormFieldModule,
+    FormsModule,
+    FlightsModule
   ]
 })
 export class PagesModule { }
