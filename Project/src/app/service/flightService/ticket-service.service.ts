@@ -14,7 +14,7 @@ export class TicketServiceService {
 
 
   ticketCreate: TicketCreate= new TicketCreate();
-  apiHost: string = 'https://localhost:5001/api/ticket';
+  apiHost: string = 'http://localhost:5001/api/ticket';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -29,14 +29,14 @@ export class TicketServiceService {
   buyOne(ticket: any): Observable<any> {
 
     console.log(ticket);
-    return this.http.post<any>('https://localhost:5001/api/ticket/buy/'+
+    return this.http.post<any>('http://localhost:5001/api/ticket/buy/'+
       ticket.flightId, ticket,
       {headers: this.headers});
   }
 
   buyMultiple(ticketDto: any): Observable<any> {
     console.log(ticketDto);
-    return this.http.post<any>( 'https://localhost:5001/api/ticket/buymultiple/'+ ticketDto.flightId, ticketDto, {headers: this.headers}).pipe(
+    return this.http.post<any>( 'http://localhost:5001/api/ticket/buymultiple/'+ ticketDto.flightId, ticketDto, {headers: this.headers}).pipe(
       catchError(this.handleError)
     );
 
