@@ -34,11 +34,11 @@ export class NavbarComponent implements OnInit {
 
   isLoggedAdmin():boolean{
     // if(this.LoggedAdmin!= name) return false
-    return true;
+    return false;
   }
   isLoggedPatient():boolean{
     // if(this.LoggedAdmin!= name) return false
-    return false;
+    return true;
   }
   ngOnDestroy(): void {
   //  this.userSub.unsubscribe();

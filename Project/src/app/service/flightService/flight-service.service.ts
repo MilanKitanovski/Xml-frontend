@@ -13,7 +13,7 @@ import {SearchResponseDto} from "../../model/searchResponseDto";
 export class FlightServiceService {
 
   public searchResponse: any[] = [];
-  apiHost: string = 'http://localhost:5000/flight';
+  apiHost: string = 'http://localhost:5001/flight';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -41,7 +41,7 @@ export class FlightServiceService {
   }
 
   getFlight(id: string): Observable<Flight> {
-    return this.http.get<Flight>('http://localhost:5000/flight/flight'+ id, {headers: this.headers});
+    return this.http.get<Flight>('http://localhost:5001/flight/flight'+ id, {headers: this.headers});
   }
 
   /*
