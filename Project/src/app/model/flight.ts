@@ -4,7 +4,7 @@ export class Flight {
   id: string = "";
   airportDestination : string = "";
   airportDeparture : string = "";
-  departureTime :  string =  "2022-12-12T00:00:05Z";
+  departureTime :  string =  "2022-04-06T14:50:05Z";
   duration : number = 0;
   ticketPrice : number = 0;
   capacity : number = 0;

@@ -57,7 +57,7 @@ export class FlightsUserComponent implements OnInit {
   private isValidInput(): boolean {
     if(this.ticketDto?.amount < 1){
 
-      alert('You must enter non-zero value for quantity!');
+      alert('You must enter >0 value for quantity!');
       return false;
     }
     else return true;
