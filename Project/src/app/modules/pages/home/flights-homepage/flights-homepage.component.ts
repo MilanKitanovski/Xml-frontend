@@ -19,7 +19,7 @@ export class FlightsHomepageComponent implements OnInit {
 
   pageTitle = 'Flights List';
   public dataSource = new MatTableDataSource<Flight>();
-  public displayedColumns = ['destination', 'departure' ,'departureTime', 'duration', 'ticketPrice'];
+  public displayedColumns = ['id','destination', 'departure' ,'departureTime', 'duration', 'ticketPrice'];
   public flights: Flight[] = [];
   public userId: string | undefined;
 
