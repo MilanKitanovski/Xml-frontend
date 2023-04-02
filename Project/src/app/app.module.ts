@@ -11,6 +11,7 @@ import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { FlightsModule } from "./components/flights.module";
 import {UserRegisterComponent} from "./components/user-register/user-register.component";
+import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import {UserRegisterComponent} from "./components/user-register/user-register.co
         ReactiveFormsModule,
         FlightsModule
     ],
-  providers: [],
+  providers: [{provide:JWT_OPTIONS, useValue: JWT_OPTIONS}, JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
