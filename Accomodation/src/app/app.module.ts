@@ -7,6 +7,8 @@ import { MaterialModule } from "./material/material.module";
 import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ReservationModule} from "./modules/components/reservation/reservation.module";
+import {AccommodationModule} from "./modules/components/accommodation/accommodation.module";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     MaterialModule,
     PagesModule,
-    HospitalModule
+    HospitalModule,
+    ReservationModule,
+    AccommodationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

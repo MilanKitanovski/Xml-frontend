@@ -1,0 +1,21 @@
+<div class="container">
+    <mat-form-field appearance="outline">
+      <mat-label>Start date</mat-label>
+      <input matInput [(ngModel)]="reservation.startDate">
+    </mat-form-field><br>
+    <mat-form-field appearance="outline">
+      <mat-label>End date</mat-label>
+      <input matInput [(ngModel)]="reservation.endDate">
+    </mat-form-field><br>
+    <mat-form-field appearance="outline">
+      <mat-label>Guest number</mat-label>
+      <input matInput [(ngModel)]="reservation.numGuests">
+    </mat-form-field><br>
+    <button class="cta" (click)="createReservation()">
+      <span class="hover-underline-animation"> CREATE</span>
+      <svg viewBox="0 0 46 16" height="10" width="30" xmlns="http://www.w3.org/2000/svg" id="arrow-horizontal">
+        <path transform="translate(30)" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" data-name="Path 10" id="Path_10"></path>
+      </svg>
+    </button>
+
+</div>
