@@ -1,28 +1,51 @@
-<mat-toolbar color="primary" class="container">
-  <div class="logo" (click)="goToHomePage()">
-      <img class="logo-img" src="./../../../../assets/logo/logo.png">
-  </div>
-  <div class="pages">
-      <div class="guest" *ngIf="!user">
-          <app-navbar-button (click)="goToHomePage()">Home</app-navbar-button>
-      </div>
-      <div *ngIf="user">
-        <ng-container class="admin" *ngIf="user.roles.includes('HOST')">
-            <app-navbar-button (click)="goToCertificatesPage()">Accomodation</app-navbar-button>
-            <app-navbar-button (click)="goToAccountsPage()">Reservation</app-navbar-button>
-            <app-navbar-button (click)="goToTemplatesPage()">Profile</app-navbar-button>
-        </ng-container>
-        <ng-container class="entity" *ngIf="user.roles.includes('GUEST')">
-          <app-navbar-button (click)="goToCertificatesPage()">Accomodation</app-navbar-button>
-          <app-navbar-button (click)="goToAccountsPage()">Reservation</app-navbar-button>
-          <app-navbar-button (click)="goToTemplatesPage()">Profile</app-navbar-button>
-        </ng-container>
-      </div>
-  </div>
+<header>
+  <nav>
+    <div class="logo">TravelHub</div>
+    <ul>
+      <li class="shrink">
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+        >
+      </li>
+      <li class="shrink" *ngIf="isLoggedHost()">
+        <a
+          routerLink="/reservations/host"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">Accommodation</a>
+      </li>
+      <li class="shrink" *ngIf="isLoggedGuest()">
+        <a
+          routerLink="/reservations"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">Reservations</a>
+      </li>
+      <li class="shrink" *ngIf="isLoggedHost()">
+        <a
+          routerLink="/reservations/create"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">Create</a>
+      </li>
+    </ul>
+    <button (click)="onToggle()"> toggle  </button>
 
-  <div>
-      <app-navbar-button *ngIf="!user" (click)="login()">Login</app-navbar-button>
-      <app-navbar-button *ngIf="user" (click)="logout()">Logout</app-navbar-button>
-  </div>
-</mat-toolbar>
-
+    <div [ngClass]="isToggled ? 'open-menu ' : 'sub-menu-wrap'">
+      <div class="sub-menu">
+        <div class="user-info">
+          <h2>{{ name }}</h2>
+        </div>
+        <hr />
+        <a routerLink="/app/profile" class="sub-menu-link">
+          <p>My Profile</p>
+          <span>></span>
+        </a>
+        <a (click)="onLogout()" href="#" class="sub-menu-link red">
+          <p>Logout</p>
+          <span>></span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -16,13 +16,13 @@ export class ReservationTableComponent implements OnInit {
   pageTitle = 'Flights List';
   errorMessage = '';
   public dataSource = new MatTableDataSource<Reservation>();
-  public displayedColumns = ['id', 'accommodationId', 'guestId', 'startDate', 'endDate', 'numGuests', 'accepted', 'totalPrice', 'delete','accept'];
+  public displayedColumns = ['id', 'accommodationId', 'guestId', 'startDate', 'endDate', 'numGuests', 'accepted', 'totalPrice', 'delete'];
   public reservations: Reservation[] = [];
 
   constructor(private reservationService: ReservationService, private router: Router) { }
 
   ngOnInit(): void {
-    this.reservationService.getAll().subscribe(res => {
+    this.reservationService.getByGuestId(1).subscribe(res => {
       this.reservations = res;
       this.dataSource.data = this.reservations;
       /* this.user = this.authService.getUser();
@@ -33,23 +33,30 @@ export class ReservationTableComponent implements OnInit {
     })*/
     })
   }
+  public deleteReservation(reservation: Reservation) {
 
-  public isHost(){
-    return true;
-  }
-  public isGuest(){
-    return false;
-  }
-  public deleteReservation(id: number) {
-    this.reservationService.deleteReservation(id).subscribe(res => {
-      this.reservationService.getAll().subscribe(res => {
+   // if (!this.LessThanTwoDays(reservation)) return alert('You can not cancel because reservation is in less than 2 days');
+    this.reservationService.cancel(reservation).subscribe(res => {
+      this.reservationService.getByGuestId(1).subscribe(res => {
         this.reservations = res;
         this.dataSource.data = this.reservations;
       })
     })
   }
-
   chooseReservation() {
 
+  }
+
+  accepted(reservation : Reservation) {
+    if(reservation.accepted== true)
+    {
+      return true;
+    }
+    return false;
+  }
+
+  private LessThanTwoDays(reservation: Reservation): boolean {
+    let dateTime = Date.now();
+    return false ;
   }
 }

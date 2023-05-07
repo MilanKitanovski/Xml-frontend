@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/core/models/user';
+import {HttpClient} from "@angular/common/http";
+
 
 //import { AuthService } from 'src/app/core/auth/services/auth.service';
 
@@ -10,50 +12,52 @@ import { User } from 'src/app/core/models/user';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit, OnDestroy{
+export class NavbarComponent implements  OnInit {
 
-  getUserSubscription = new Subscription();
-
-  user: User | null = null;
-
+  //private authService: AuthService, u konstruktor
   constructor(
-   // private authService: AuthService,
-    private router: Router
-  ) {}
+    private http: HttpClient,
+    private router: Router) { }
 
+  ngOnInit(): void {
+
+    /* this.userSub = this.authService.user.subscribe(user =>{
+       this.isLogged = !!user
+       this.name = user.email
+     }); */
+    this.LoggedAdmin = 'user.Admin'
+    this.name = 'user.email';
+  }
+
+//  private userSub: Subscription;
+  isLogged: boolean = false
+  isToggled: boolean= false
+  name: string = ''
+  LoggedAdmin: any;
+
+
+  isLoggedHost():boolean{
+    // if(this.LoggedAdmin!= name) return false
+    return true;
+  }
+  isLoggedGuest():boolean{
+    // if(this.LoggedAdmin!= name) return false
+    return false;
+  }
   ngOnDestroy(): void {
-    this.getUserSubscription.unsubscribe()
+    //  this.userSub.unsubscribe();
   }
 
-  ngOnInit() {
-   /* this.user = this.authService.getUser();
-    this.getUserSubscription = this.authService.getUserObservable().subscribe({
-      next: (result) => {
-        this.user = result
-      }
-    })*/
+  onHome(){
+    this.router.navigate(['/'])
   }
 
-  login() {
-   this.router.navigate(['/login'])
+  onLogout(){
+    //  this.authService.logout();
   }
 
-  logout() {
-  //  this.authService.logout()
+  onToggle(){
+    this.isToggled = !this.isToggled;
   }
 
-  goToHomePage() {
-    this.router.navigate([''])
-  }
-
-  goToAccountsPage() {
-    this.router.navigate(['/accounts'])
-  }
-  goToTemplatesPage() {
-    this.router.navigate(['/certificates/template'])
-  }
-
-  goToCertificatesPage() {
-    this.router.navigate(['/certificates'])
-  }
 }

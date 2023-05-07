@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavbarButtonComponent } from './components/navbar-button/navbar-button.component';
 import { MaterialModule } from '../material/material.module';
+import {RouterLinkActive} from "@angular/router";
 
 
 
@@ -13,7 +14,8 @@ import { MaterialModule } from '../material/material.module';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    RouterLinkActive
   ],
   exports: [
     NavbarComponent

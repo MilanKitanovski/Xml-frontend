@@ -7,26 +7,15 @@ import {Reservation} from "../models/reservation";
   providedIn: 'root'
 })
 export class ReservationService {
-
-  public searchResponse: any[] = [];
   apiHost: string = 'http://localhost:5028/api/reservation';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
-
   getAll(): Observable<Reservation[]> {
   return this.http.get<Reservation[]>(this.apiHost + '/all', {headers: this.headers}).pipe(
   catchError(this.handleError)
 );
 }
-
-  deleteReservation(id: number): Observable<any> {
-    return this.http.delete<any>(this.apiHost + '/' + id, {headers: this.headers}).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-
   private handleError(err: any) {
     let errorMessage: string;
     if (err.error instanceof ErrorEvent) {
@@ -43,4 +32,24 @@ export class ReservationService {
       catchError(this.handleError)
     );
   }
+  getByHostId(id: number): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(this.apiHost + '/host' + id, {headers: this.headers}).pipe(
+      catchError(this.handleError)
+    );
+  }
+  getByGuestId(id: number): Observable<Reservation[]> {
+  return this.http.get<Reservation[]>(this.apiHost + '/guest' + id, {headers: this.headers}).pipe(
+  catchError(this.handleError)
+);
+}
+  cancel(reservation: any): Observable<any> {
+    return this.http.put<Reservation>(this.apiHost + '/guestCancel', reservation, {headers: this.headers});
+  }
+  autoAccept(reservation: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + '/autoAccept', reservation, {headers: this.headers});
+  }
+  acceptReservation(reservation: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + '/accept' , reservation, {headers: this.headers});
+  }
+
 }
