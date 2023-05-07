@@ -28,8 +28,9 @@ export class AccommodationService {
     return this.http.delete<any>(this.apiHost + '/rooms/' + id, {headers: this.headers});
   }*/
 
-  create(room: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'api/rooms', room, {headers: this.headers});
+  create(accommodationDto: any): Observable<any> {
+    console.log(accommodationDto);
+    return this.http.post<any>('http://localhost:5028/api/accommodation/createAccomodation', accommodationDto, {headers: this.headers});
   }
 
 

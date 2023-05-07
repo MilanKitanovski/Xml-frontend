@@ -8,6 +8,7 @@ import { CarouselComponent } from './home/carousel/carousel.component';
 import { AccommodationHomepageComponent } from './home/accommodation-homepage/accommodation-homepage.component';
 import { OurServicesComponent } from './home/our-services/our-services.component';
 import {FooterModule} from "../../shared/footer/footer.module";
+import {AccommodationModule} from "../components/accommodation/accommodation.module";
 @NgModule({
   declarations: [
     HomeComponent,
@@ -17,10 +18,11 @@ import {FooterModule} from "../../shared/footer/footer.module";
     AccommodationHomepageComponent,
     OurServicesComponent
   ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    FooterModule
-  ]
+    imports: [
+        CommonModule,
+        AppRoutingModule,
+        FooterModule,
+        AccommodationModule
+    ]
 })
 export class PagesModule { }

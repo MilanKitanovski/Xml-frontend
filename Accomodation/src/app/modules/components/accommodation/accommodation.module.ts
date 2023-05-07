@@ -13,8 +13,8 @@ import {AccommodationViewComponent} from "./accommodation-view/accommodation-vie
 
 const routes: Routes = [
   { path: 'accommodations', component: AccommodationAllComponent },
-  { path: 'accommodation/create', component: AccommodationCreateComponent },
-  {path : 'accommodation/:id', component: AccommodationViewComponent}
+  { path: 'accommodations/create', component: AccommodationCreateComponent },
+  {path : 'accommodations/:id', component: AccommodationViewComponent}
 
 ];
 
@@ -33,6 +33,6 @@ const routes: Routes = [
     NavbarModule,
     MatDatepickerModule
   ],
-  exports: [RouterModule]
+  exports: [RouterModule, AccommodationAllComponent]
 })
 export class AccommodationModule { }

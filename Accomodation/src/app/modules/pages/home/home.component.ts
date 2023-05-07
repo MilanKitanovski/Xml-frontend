@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AccommodationService} from "../../../core/services/accommodation.service";
+import {MatDialog} from "@angular/material/dialog";
+import {LogInComponent} from "../log-in/log-in.component";
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,7 @@ import {AccommodationService} from "../../../core/services/accommodation.service
 export class HomeComponent implements OnInit{
 
 accommodations: any = [];
+public dialog!: MatDialog;
 constructor(private router: Router, private accommodationService: AccommodationService) { }
 
 ngOnInit(): void {
