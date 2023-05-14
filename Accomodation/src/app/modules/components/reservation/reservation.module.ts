@@ -13,7 +13,7 @@ import {FooterModule} from "../../../shared/footer/footer.module";
 
 
 const routes: Routes = [
-  { path: 'reservations', component: ReservationTableComponent },
+  { path: 'reservations/guest', component: ReservationTableComponent },
   { path: 'reservations/create', component: ReservationCreateComponent },
   {path : 'reservations/host', component: ReservationHostComponent}
 

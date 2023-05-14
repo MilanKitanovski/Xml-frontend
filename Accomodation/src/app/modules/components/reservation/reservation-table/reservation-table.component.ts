@@ -3,7 +3,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Reservation} from "../../../../core/models/reservation";
 import {ReservationService} from "../../../../core/services/reservation.service";
 import {Router} from "@angular/router";
-import {User} from "../../../../core/models/user";
+import {User} from "../../../../core/auth/models/user";
 
 @Component({
   selector: 'app-reservation-table',

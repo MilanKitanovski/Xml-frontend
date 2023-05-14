@@ -1,51 +1,30 @@
-<header>
-  <nav>
-    <div class="logo">TravelHub</div>
-    <ul>
-      <li class="shrink">
-        <a
-          routerLink="/"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >Home</a
-        >
-      </li>
-      <li class="shrink" *ngIf="isLoggedHost()">
-        <a
-          routerLink="/reservations/host"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Accommodation</a>
-      </li>
-      <li class="shrink" *ngIf="isLoggedGuest()">
-        <a
-          routerLink="/reservations"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Reservations</a>
-      </li>
-      <li class="shrink" *ngIf="isLoggedHost()">
-        <a
-          routerLink="/reservations/create"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Create</a>
-      </li>
-    </ul>
-    <button (click)="onToggle()"> toggle  </button>
-
-    <div [ngClass]="isToggled ? 'open-menu ' : 'sub-menu-wrap'">
-      <div class="sub-menu">
-        <div class="user-info">
-          <h2>{{ name }}</h2>
-        </div>
-        <hr />
-        <a routerLink="/app/profile" class="sub-menu-link">
-          <p>My Profile</p>
-          <span>></span>
-        </a>
-        <a (click)="onLogout()" href="#" class="sub-menu-link red">
-          <p>Logout</p>
-          <span>></span>
-        </a>
-      </div>
+<mat-toolbar color="primary" class="container">
+  <div class="pages">
+    <div class="guest" *ngIf="!user">
+      <app-navbar-button (click)="goToHomePage()">Home</app-navbar-button>
     </div>
-  </nav>
-</header>
+    <div *ngIf="user">
+      <ng-container class="admin" *ngIf="loggedHost()">
+        <app-navbar-button (click)="goToHomePage()">Home</app-navbar-button>
+        <app-navbar-button (click)="goToAccommodationsPage()">Accommodation</app-navbar-button>
+        <app-navbar-button (click)="goToMyAccommodationsPageHost()">My accommodation</app-navbar-button>
+        <app-navbar-button (click)="goToAccommodationsCreateHost()">Add</app-navbar-button>
+        <app-navbar-button (click)="goToReservationsPageHost()">Reservations</app-navbar-button>
+        <app-navbar-button (click)="goToAccountsPage()">Profile</app-navbar-button>
+      </ng-container>
+      <ng-container class="certificate-authority" *ngIf="loggedGuest()">
+        <app-navbar-button (click)="goToHomePage()">Home</app-navbar-button>
+        <app-navbar-button (click)="goToAccommodationsPage()">Accommodation</app-navbar-button>
+        <app-navbar-button (click)="goToReservationsPageGuest()">Reservations</app-navbar-button>
+        <app-navbar-button (click)="goToAccountsPage()">Profile</app-navbar-button>
+      </ng-container>
+
+    </div>
+  </div>
+
+  <div>
+    <app-navbar-button *ngIf="!user" (click)="login()">Login</app-navbar-button>
+    <app-navbar-button *ngIf="user" (click)="logout()">Logout</app-navbar-button>
+  </div>
+</mat-toolbar>
+

@@ -42,6 +42,13 @@ export class ReservationService {
   catchError(this.handleError)
 );
 }
+
+//notAvailableDates{id}
+  notAvailableDates(id: number): Observable<Date[]> {
+    return this.http.get<Date[]>(this.apiHost + '/notAvailableDates' + id, {headers: this.headers}).pipe(
+      catchError(this.handleError)
+    );}
+
   cancel(reservation: any): Observable<any> {
     return this.http.put<Reservation>(this.apiHost + '/guestCancel', reservation, {headers: this.headers});
   }

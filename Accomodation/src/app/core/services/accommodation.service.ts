@@ -17,11 +17,11 @@ export class AccommodationService {
   }
 
   getAll(): Observable<Accommodation[]> {
-    return this.http.get<Accommodation[]>(this.apiHost + '/rooms', {headers: this.headers});
+    return this.http.get<Accommodation[]>(this.apiHost + '/all', {headers: this.headers});
   }
-
+//accommodation{id}
   get(id: number): Observable<Accommodation> {
-    return this.http.get<Accommodation>(this.apiHost + '/rooms/' + id, {headers: this.headers});
+    return this.http.get<Accommodation>(this.apiHost + '/accommodation' + id, {headers: this.headers});
   }
 /*
   delete(id: any): Observable<any> {

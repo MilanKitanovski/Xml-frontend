@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/core/models/user';
 import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../../../../core/auth/services/auth.service";
+import {User} from "../../../../core/auth/models/user";
 
 
 //import { AuthService } from 'src/app/core/auth/services/auth.service';
@@ -14,50 +15,66 @@ import {HttpClient} from "@angular/common/http";
 })
 export class NavbarComponent implements  OnInit {
 
-  //private authService: AuthService, u konstruktor
+  getUserSubscription = new Subscription();
+  user: User | null = null;
+
   constructor(
-    private http: HttpClient,
-    private router: Router) { }
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-
-    /* this.userSub = this.authService.user.subscribe(user =>{
-       this.isLogged = !!user
-       this.name = user.email
-     }); */
-    this.LoggedAdmin = 'user.Admin'
-    this.name = 'user.email';
+  ngOnDestroy(): void {
+    this.getUserSubscription.unsubscribe()
   }
 
-//  private userSub: Subscription;
-  isLogged: boolean = false
-  isToggled: boolean= false
-  name: string = ''
-  LoggedAdmin: any;
+  ngOnInit() {
+  /*  this.user = this.authService.getUser();
+    this.getUserSubscription = this.authService.getUserObservable().subscribe({
+      next: (result) => {
+        this.user = result
+      }
+    }) */
+  }
+
+  login() {
+    this.router.navigate(['/login'])
+  }
+
+  logout() {
+    this.authService.logout()
+  }
+
+  goToHomePage() {
+    this.router.navigate([''])
+  }
+
+  goToAccountsPage() {
+    this.router.navigate(['/accounts'])
+  }
+  goToAccommodationsPage() {
+    this.router.navigate(['/accommodations'])
+  }
 
 
-  isLoggedHost():boolean{
-    // if(this.LoggedAdmin!= name) return false
+  goToMyAccommodationsPageHost() {
+    this.router.navigate(['/accommodations/host'])
+  }
+
+  goToReservationsPageHost() {
+    this.router.navigate(['/reservations/host'])
+  }
+  goToReservationsPageGuest() {
+    this.router.navigate(['/reservations/guest'])
+  }
+  goToAccommodationsCreateHost(){
+    this.router.navigate(['/accommodations/create'])
+  }
+
+  loggedHost() {
     return true;
   }
-  isLoggedGuest():boolean{
-    // if(this.LoggedAdmin!= name) return false
+
+  loggedGuest() {
     return false;
   }
-  ngOnDestroy(): void {
-    //  this.userSub.unsubscribe();
-  }
-
-  onHome(){
-    this.router.navigate(['/'])
-  }
-
-  onLogout(){
-    //  this.authService.logout();
-  }
-
-  onToggle(){
-    this.isToggled = !this.isToggled;
-  }
-
 }
