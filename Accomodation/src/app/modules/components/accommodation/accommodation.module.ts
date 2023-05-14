@@ -6,23 +6,27 @@ import { MaterialModule } from "src/app/material/material.module";
 import {NavbarComponent} from "../../../shared/navbar/components/navbar/navbar.component";
 import {NavbarModule} from "../../../shared/navbar/navbar.module";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {AccommodationAllComponent} from "./accommodation-all/accommodation-all.component";
+import {AccommodationComponent} from "./accommodation-homepage/accommodation-all.component";
 import {AccommodationCreateComponent} from "./accommodation-create/accommodation-create.component";
 import {AccommodationViewComponent} from "./accommodation-view/accommodation-view.component";
+import { AccommodationViewAllComponent } from './accommodation-view-all/accommodation-view-all.component';
+import { AccommodationHostComponent } from './accommodation-host/accommodation-host.component';
 
 
 const routes: Routes = [
-  { path: 'accommodations', component: AccommodationAllComponent },
-  { path: 'accommodation/create', component: AccommodationCreateComponent },
-  {path : 'accommodation/:id', component: AccommodationViewComponent}
-
+  { path: 'accommodations', component: AccommodationViewAllComponent },
+  { path: 'accommodations/create', component: AccommodationCreateComponent },
+  {path : 'accommodation/:id', component: AccommodationViewComponent},
+  {path : 'accommodations/host', component:AccommodationHostComponent}
 ];
 
 @NgModule({
   declarations: [
     AccommodationCreateComponent,
     AccommodationViewComponent,
-    AccommodationAllComponent
+    AccommodationComponent,
+    AccommodationViewAllComponent,
+    AccommodationHostComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +37,6 @@ const routes: Routes = [
     NavbarModule,
     MatDatepickerModule
   ],
-  exports: [RouterModule]
+  exports: [RouterModule, AccommodationComponent]
 })
 export class AccommodationModule { }

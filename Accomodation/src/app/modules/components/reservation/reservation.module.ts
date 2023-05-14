@@ -9,11 +9,12 @@ import {NavbarComponent} from "../../../shared/navbar/components/navbar/navbar.c
 import {NavbarModule} from "../../../shared/navbar/navbar.module";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { ReservationHostComponent } from './reservation-host/reservation-host.component';
+import {FooterModule} from "../../../shared/footer/footer.module";
 
 
 const routes: Routes = [
-  { path: 'reservations', component: ReservationTableComponent },
-  { path: 'reservation/create', component: ReservationCreateComponent },
+  { path: 'reservations/guest', component: ReservationTableComponent },
+  { path: 'reservations/create', component: ReservationCreateComponent },
   {path : 'reservations/host', component: ReservationHostComponent}
 
 ];
@@ -31,7 +32,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     NavbarModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    FooterModule
   ],
   exports: [RouterModule, ReservationTableComponent, ReservationCreateComponent]
 })

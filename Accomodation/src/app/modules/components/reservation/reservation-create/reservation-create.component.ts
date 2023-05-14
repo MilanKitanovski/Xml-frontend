@@ -13,7 +13,6 @@ export class ReservationCreateComponent implements OnInit {
 
   public reservation: ReservationDto = new ReservationDto();
   constructor(private  reservationService: ReservationService, private router: Router) {
-
     this.reservation.accommodationId = '1';
   this.reservation.guestId = '1';
   this.reservation.accepted = false;
@@ -21,10 +20,15 @@ export class ReservationCreateComponent implements OnInit {
 
   public createReservation(){
     if (!this.isValidInput()) return alert('invalid input');
-
+//provera da li se automatski prihvata
     this.reservationService.createReservation(this.reservation).subscribe(res => {
       this.router.navigate(['/reservations']);
     });
+  }
+
+  public acceptReservation(id: number) {
+    //automatsko prihvatanje
+    this.reservationService.autoAccept(this.reservation).subscribe();
   }
   private isValidInput(): boolean {
     return this.reservation?.numGuests.toString() != ''

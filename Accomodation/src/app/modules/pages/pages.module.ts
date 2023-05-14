@@ -4,16 +4,27 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
-import {Routes} from "@angular/router";
+import { CarouselComponent } from './home/carousel/carousel.component';
+import { OurServicesComponent } from './home/our-services/our-services.component';
+import {FooterModule} from "../../shared/footer/footer.module";
+import {AccommodationModule} from "../components/accommodation/accommodation.module";
+import {InputModule} from "../../shared/ui/input/input.module";
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     HomeComponent,
     LogInComponent,
     RegisterComponent,
+    CarouselComponent,
+    OurServicesComponent
   ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-  ]
+    imports: [
+        CommonModule,
+        AppRoutingModule,
+        FooterModule,
+        AccommodationModule,
+        InputModule,
+        FormsModule
+    ]
 })
 export class PagesModule { }

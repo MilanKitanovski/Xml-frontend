@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {ReservationDto} from "../../../../core/dtos/reservationDto";
+import {ReservationService} from "../../../../core/services/reservation.service";
+import {Router} from "@angular/router";
+import {AccommodationDto} from "../../../../core/dtos/accommodationDto";
+import {AccommodationService} from "../../../../core/services/accommodation.service";
 
 @Component({
   selector: 'app-accommodation-create',
@@ -7,8 +12,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccommodationCreateComponent implements OnInit {
 
-  constructor() { }
 
+  public accommodation: AccommodationDto = new AccommodationDto();
+  constructor(private  accommodationService: AccommodationService, private router: Router) {
+    this.accommodation.hostId = 1;}
+
+  public createAccommodation(){
+    this.accommodationService.create(this.accommodation).subscribe({
+        next: res => {
+          console.log(res);
+        },
+        error: err => {
+          console.log(err);
+        }
+      }
+    );
+  }
+
+  private isValidInput(): boolean {
+
+  return true;}
   ngOnInit(): void {
   }
 
