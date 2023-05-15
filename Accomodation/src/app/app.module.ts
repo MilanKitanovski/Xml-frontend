@@ -10,6 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReservationModule} from "./modules/components/reservation/reservation.module";
 import {AccommodationModule} from "./modules/components/accommodation/accommodation.module";
 import { FooterComponent } from './shared/footer/footer.component';
+<<<<<<< Updated upstream
+=======
+import { UserProfileComponent } from './modules/components/user-profile/user-profile.component';
+import {FormControl, FormControlName, FormsModule, ReactiveFormsModule} from "@angular/forms";
+>>>>>>> Stashed changes
 
 @NgModule({
     declarations: [
@@ -24,7 +29,14 @@ import { FooterComponent } from './shared/footer/footer.component';
         PagesModule,
         HospitalModule,
         ReservationModule,
+<<<<<<< Updated upstream
         AccommodationModule
+=======
+        AccommodationModule,
+        FormsModule,
+        ReactiveFormsModule,
+
+>>>>>>> Stashed changes
     ],
     providers: [],
     exports: [
