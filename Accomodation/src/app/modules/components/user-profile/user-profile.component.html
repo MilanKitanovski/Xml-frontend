@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>User Profile</h1>
+
+  <div *ngIf="!isEditing">
+    <div class="user-info">
+      <div><strong>Name:</strong> {{ userProfile.name }}</div>
+      <div><strong>Surname:</strong> {{ userProfile.surname }}</div>
+      <div><strong>Email:</strong> {{ userProfile.email }}</div>
+      <div><strong>Password:</strong> {{ userProfile.password }}</div>
+      <div><strong>City:</strong> {{ userProfile.cityId }}</div>
+      <div><strong>Role:</strong> {{ userRole }}</div>
+    </div>
+
+    <button class="btn-edit" (click)="editUserProfile()">Edit Profile</button>
+  </div>
+
+  <div *ngIf="isEditing">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="userProfile.name" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" [(ngModel)]="userProfile.surname" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="userProfile.email" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="userProfile.password" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input type="text" id="city" [(ngModel)]="userProfile.cityId" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <input type="text" id="role" [(ngModel)]="userRole" class="form-control">
+    </div>
+
+    <button class="btn-save" (click)="saveUserProfile()">Save</button>
+    <button class="btn-cancel" (click)="cancelEdit()">Cancel</button>
+  </div>
+</div>
+

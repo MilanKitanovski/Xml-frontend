@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 import { LoginResponse } from '../dtos/login-response';
 import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Token } from '../models/token';
 import {Observable, Subject, throwError} from 'rxjs';
 import {Register} from "../models/register";
