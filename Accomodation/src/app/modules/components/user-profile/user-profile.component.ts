@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfileDto } from 'src/app/core/dtos/userProfileDto';
 import { UserProfileService } from 'src/app/core/services/user-profile.service';
+import {FormGroup, Validators, FormControl} from "@angular/forms";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -13,44 +15,40 @@ export class UserProfileComponent implements OnInit {
   isEditing: boolean = false;
   userRole: string = '';
 
-  constructor(private userProfileService: UserProfileService) {}
+  constructor(
+    private userProfileService: UserProfileService,
+    private router: Router
+  ) {}
+  changeInfoForm!: FormGroup
+
+  changeInfo() {
+    console.log(this.userProfile)
+    this.userProfile.name = this.changeInfoForm.get("name")?.value;  //preuzimanje param forme
+    this.userProfile.surname = this.changeInfoForm.get("surname")?.value;
+    this.userProfile.email = this.changeInfoForm.get("email")?.value;
+    this.userProfile.password = this.changeInfoForm.get("password")?.value;
+
+    console.log(this.changeInfoForm.get("gender")?.value)
+    this.userProfileService.updateUserProfile(this.userProfile).subscribe()
+  }
 
   ngOnInit(): void {
-    this.userProfileService.get(3).subscribe(
-      userProfile => {
-        this.userProfile = userProfile;
-        if(userProfile.userType===0){
-          this.userRole='Host'
-        }else{
-          this.userRole = 'Guest'
-        }
-      },
-      error => {
-        console.error(error);
-      }
-    );
+
+    this.changeInfoForm = new FormGroup({
+      name: new FormControl('', Validators.required),  //validacija
+      surname: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required)
+    })
+
+    this.userProfileService.get(this.userProfile.id).subscribe((response: UserProfileDto) => {
+      this.userProfile = response;
+
+      this.changeInfoForm.controls['name'].setValue(response.name);  //set param forme
+      this.changeInfoForm.controls['surname'].setValue(response.surname);
+      this.changeInfoForm.controls['email'].setValue(response.email);
+      this.changeInfoForm.controls['password'].setValue(response.password);
+
+      console.log(response)
+    })
   }
-
-  editUserProfile(): void {
-    this.isEditing = true;
-  }
-
-  saveUserProfile(): void {
-
-    this.userProfileService.updateUserProfile(this.userProfile).subscribe(
-      response => {
-        console.log('User profile saved successfully');
-        this.isEditing = false;
-      },
-      error => {
-        console.error(error);
-      }
-    );
-  }
-
-  cancelEdit(): void {
-    this.isEditing = false;
-    this.ngOnInit();
-  }
-
 }

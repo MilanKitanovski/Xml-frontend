@@ -11,7 +11,7 @@ import {ReservationModule} from "./modules/components/reservation/reservation.mo
 import {AccommodationModule} from "./modules/components/accommodation/accommodation.module";
 import { FooterComponent } from './shared/footer/footer.component';
 import { UserProfileComponent } from './modules/components/user-profile/user-profile.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -28,7 +28,8 @@ import {FormsModule} from "@angular/forms";
         HospitalModule,
         ReservationModule,
         AccommodationModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [],
     exports: [
