@@ -103,6 +103,15 @@ export class AuthService {
     return this.user != null && this.user.roles.includes('GUEST')
   }
 
+  getRole(){
+    if(this.isHost())
+      return 'HOST';
+    else if(this.isGuest())
+      return 'GUEST';
+    else
+      return 'No role';
+  }
+
   private clearAuthAndRedirectHome() {
     this.clearAuth()
     this.redirectHome()
