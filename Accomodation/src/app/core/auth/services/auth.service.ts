@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 import { LoginResponse } from '../dtos/login-response';
 import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Token } from '../models/token';
 import {Observable, Subject, throwError} from 'rxjs';
 import {Register} from "../models/register";
@@ -29,18 +28,18 @@ export class AuthService {
     if(this.tokenValid()){
       this.clearAuthAndRedirectHome()
     }
-   }
+  }
 
   login(loginRequest: LoginRequest) {
     this.http.post<LoginResponse>("http://localhost:5245/api/auth/login", loginRequest).subscribe({
       next: (response) => {
         this.setAuth(response.token)
         console.log(response)
-      //  this.toastr.success('Login successful.', "Login Success")
+        //  this.toastr.success('Login successful.', "Login Success")
         this.redirectHome();
       },
       error: (error: Error) => {
-      console.log(error)
+        console.log(error)
       }
     })
   }
@@ -104,15 +103,24 @@ export class AuthService {
     return this.user != null && this.user.roles.includes('GUEST')
   }
 
+  getRole(){
+    if(this.isHost())
+      return 'HOST';
+    else if(this.isGuest())
+      return 'GUEST';
+    else
+      return 'No role';
+  }
+
   private clearAuthAndRedirectHome() {
     this.clearAuth()
     this.redirectHome()
   }
 
   private extractUser(token: string) {
-        const decodedToken: Token = jwtDecode(token)
-        const authorities = decodedToken.authorities.map((auth: any) => auth.authority)
-        return new User(decodedToken.sub, authorities)
+    const decodedToken: Token = jwtDecode(token)
+    const authorities = decodedToken.authorities.map((auth: any) => auth.authority)
+    return new User(decodedToken.sub, authorities)
   }
 
   private tokenValid(): boolean {

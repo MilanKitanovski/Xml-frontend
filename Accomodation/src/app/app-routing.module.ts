@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
-
+  //{path: 'user-profile', component: UserProfileComponent, canActivate:[AuthGuardGuard], data: {role: ['HOST', 'GUEST']}},
 ];
 
 @NgModule({
