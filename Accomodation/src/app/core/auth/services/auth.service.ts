@@ -10,6 +10,7 @@ import { Token } from '../models/token';
 import {Observable, Subject, throwError} from 'rxjs';
 import {Register} from "../models/register";
 import {catchError} from "rxjs/operators";
+import {SignInRequestPayload} from "../../../modules/pages/log-in/login-request";
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class AuthService {
     }
   }
 
-  login(loginRequest: LoginRequest) {
+  /*login(loginRequest: LoginRequest) {
     this.http.post<LoginResponse>("http://localhost:5245/api/auth/login", loginRequest).subscribe({
       next: (response) => {
         this.setAuth(response.token)
@@ -42,9 +43,9 @@ export class AuthService {
         console.log(error)
       }
     })
-  }
-  signIn(loginRequest: LoginRequest): Observable<any> {
-    return this.http.post("http://localhost:5245/api/auth/login", loginRequest, { responseType: 'text' });
+  } */
+  signIn(signInRequest: SignInRequestPayload): Observable<any> {
+    return this.http.post("http://localhost:5245/api/auth/login", signInRequest, { responseType: 'text' });
   }
 
   register(register : Register) : Observable<any> {
