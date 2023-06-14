@@ -10,10 +10,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReservationModule} from "./modules/components/reservation/reservation.module";
 import {AccommodationModule} from "./modules/components/accommodation/accommodation.module";
 import { FooterComponent } from './shared/footer/footer.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {LogInComponent} from "./modules/pages/log-in/log-in.component";
+import {RegisterComponent} from "./modules/pages/register/register.component";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
@@ -24,7 +27,8 @@ import { FooterComponent } from './shared/footer/footer.component';
         PagesModule,
         HospitalModule,
         ReservationModule,
-        AccommodationModule
+        AccommodationModule,
+        ReactiveFormsModule
     ],
     providers: [],
     exports: [
