@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 import { LoginResponse } from '../dtos/login-response';
 import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Token } from '../models/token';
 import {Observable, Subject, throwError} from 'rxjs';
 import {Register} from "../models/register";
@@ -49,7 +48,7 @@ export class AuthService {
   }
 
   register(register : Register) : Observable<any> {
-    return this.http.post<Register>('http://localhost:5245/api/user/register',register, {headers: this.headers}).pipe(
+    return this.http.post<Register>('http://localhost:8080/users/register',register, {headers: this.headers}).pipe(
       catchError(this.handleError)
     );
   }
