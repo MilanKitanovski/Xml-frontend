@@ -31,7 +31,7 @@ export class AuthService {
    }
 
   login(loginRequest: LoginRequest) {
-    this.http.post<LoginResponse>("http://localhost:5245/api/auth/login", loginRequest).subscribe({
+    this.http.post<LoginResponse>("http://localhost:8080/auth/login", loginRequest).subscribe({
       next: (response) => {
         this.setAuth(response.token)
         console.log(response)
@@ -44,7 +44,7 @@ export class AuthService {
     })
   }
   signIn(loginRequest: LoginRequest): Observable<any> {
-    return this.http.post("http://localhost:5245/api/auth/login", loginRequest, { responseType: 'text' });
+    return this.http.post("http://localhost:8080/auth/login", loginRequest, { responseType: 'text' });
   }
 
   register(register : Register) : Observable<any> {

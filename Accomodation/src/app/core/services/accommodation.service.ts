@@ -10,7 +10,7 @@ import {Accommodation} from "../models/accommodation";
 export class AccommodationService {
 
 
-  apiHost: string = 'http://localhost:5028/api/accommodation';
+  apiHost: string = 'http://localhost:8080/accommodations';
   headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) {
@@ -30,7 +30,12 @@ export class AccommodationService {
 
   create(accommodationDto: any): Observable<any> {
     console.log(accommodationDto);
-    return this.http.post<any>('http://localhost:5028/api/accommodation/createAccomodation', accommodationDto, {headers: this.headers});
+    return this.http.post<any>('http://localhost:8080/accommodations/createAccomodation', accommodationDto, {headers: this.headers});
+  }
+
+  search(guestsNum: number, location: number, startDate: string, endDate: string): Observable<Accommodation[]> {
+    const url = `${this.apiHost}/search/${guestsNum}/${location}/${startDate}/${endDate}`;
+    return this.http.get<Accommodation[]>(url, { headers: this.headers });
   }
 
 

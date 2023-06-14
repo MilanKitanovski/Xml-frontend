@@ -7,7 +7,7 @@ import {Reservation} from "../models/reservation";
   providedIn: 'root'
 })
 export class ReservationService {
-  apiHost: string = 'http://localhost:5028/api/reservation';
+  apiHost: string = 'http://localhost:8080/reservation';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -58,5 +58,9 @@ export class ReservationService {
   acceptReservation(reservation: any): Observable<any> {
     return this.http.put<any>(this.apiHost + '/accept' , reservation, {headers: this.headers});
   }
+
+  //getTotalProce()
+
+
 
 }
