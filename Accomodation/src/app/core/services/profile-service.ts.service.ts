@@ -10,11 +10,16 @@ import {UserProfileDto} from "../dtos/userDto";
 export class ProfileServiceTsService {
 
   baseUrl = 'http://localhost:5245'
+  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
 
 
-  changeUser(user: UserProfileDto): Observable<any>{
+  get(id: number): Observable<UserProfileDto> {
+    return this.http.get<UserProfileDto>(this.baseUrl + '/getUserByID/' + id, {headers: this.headers});
+  }
+
+  updateUserProfile(user: UserProfileDto): Observable<any>{
     let headers = new HttpHeaders({
       "Content-Type" : "application/json",
       "Authorization" : "Bearer " + localStorage.getItem("token"), //autorizacija
