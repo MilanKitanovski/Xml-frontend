@@ -13,10 +13,12 @@ import { FooterComponent } from './shared/footer/footer.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {LogInComponent} from "./modules/pages/log-in/log-in.component";
 import {RegisterComponent} from "./modules/pages/register/register.component";
+import { ProfileComponent } from './modules/components/profile/profile.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        ProfileComponent,
     ],
     imports: [
         BrowserModule,
