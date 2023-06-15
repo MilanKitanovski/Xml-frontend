@@ -37,16 +37,16 @@ export class LogInComponent implements OnInit{
   signin() {
     this.signInRequest.email = this.loginForm.get('email')?.value;
     this.signInRequest.password = this.loginForm.get('password')?.value;
-    console.log(this.signInRequest)
-    this.authService.signIn(this.signInRequest).subscribe(data => {
+    this.authService.signIn(this.signInRequest).subscribe({next: data => {
       this.isExist = false;
-      const user = JSON.parse(data);
-      localStorage.setItem("token", user.token);
-    }, error => {
-      if(error['status'] == 403){
+      console.log(data.text);
+      localStorage.setItem("token", data);
+    }, error:error => {
+      console.log(error)
+      if (error['status'] == 403) {
         this.isExist = true;
       }
-    });
+    }});
 
   }
   register() {

@@ -4,7 +4,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { LoginRequest } from '../dtos/login-request';
 import { environment } from 'src/environments/environment';
 import { LoginResponse } from '../dtos/login-response';
-import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { Token } from '../models/token';
 import {Observable, Subject, throwError} from 'rxjs';
@@ -26,9 +25,9 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {
     this.loadAuth()
 
-    if(this.tokenValid()){
-      this.clearAuthAndRedirectHome()
-    }
+    // if(this.tokenValid()){
+    //   this.clearAuthAndRedirectHome()
+    // }
   }
 
   /*login(loginRequest: LoginRequest) {
@@ -45,7 +44,7 @@ export class AuthService {
     })
   } */
   signIn(signInRequest: SignInRequestPayload): Observable<any> {
-    return this.http.post("http://localhost:5245/api/auth/login", signInRequest, { responseType: 'text' });
+    return this.http.post<any>("http://localhost:5245/api/auth/login", signInRequest);
   }
 
   register(register : Register) : Observable<any> {
@@ -69,32 +68,27 @@ export class AuthService {
     this.loadUser()
     this.loadToken()
   }
-
-  setAuth(token: string) {
-    this.setUser(token)
-    this.setToken(token)
-  }
+  //
+  // setAuth(token: string) {
+  //   this.setUser(token)
+  //   this.setToken(token)
+  // }
 
   clearAuth() {
     this.clearUser()
     this.clearToken()
   }
 
-  getUser() {
-    return this.user
-  }
-  getUserObservable() {
-    return this.user$
-  }
+
+
   getToken() {
     return this.token;
   }
-  getTokenObservable() {
-    return this.token$;
-  }
-  isAuthenticated() {
-    return this.user != null && this.token != null && this.tokenValid()
-  }
+
+ isAuthenticated() {
+   //return this.user != null && this.token != null && this.tokenValid()
+   return true;
+ }
 
   isHost() {
     return this.user != null && this.user.roles.includes('HOST')
@@ -117,7 +111,7 @@ export class AuthService {
     this.clearAuth()
     this.redirectHome()
   }
-
+/*
   private extractUser(token: string) {
     const decodedToken: Token = jwtDecode(token)
     const authorities = decodedToken.authorities.map((auth: any) => auth.authority)
@@ -132,7 +126,7 @@ export class AuthService {
     const currentDate = new Date()
 
     return currentDate > expirationDate
-  }
+  } */
 
   private loadUser() {
     const user = window.sessionStorage.getItem('user')
@@ -149,7 +143,7 @@ export class AuthService {
     this.token = token
     this.token$.next(this.token)
   }
-
+/*
 
   private setUser(token: string) {
     this.user = this.extractUser(token)
@@ -161,7 +155,7 @@ export class AuthService {
     this.token = token
     window.sessionStorage.setItem('token', this.token)
     this.token$.next(this.token)
-  }
+  } */
 
   redirectHome() {
     this.router.navigate(['']);
