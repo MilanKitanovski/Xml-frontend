@@ -28,6 +28,7 @@ public reservedDateSliced: Date[] = [];
 
   public createReservation(){
     if (!this.isValidInput()) return alert('invalid input');
+    if (this.reservation.endDate < this.reservation.startDate ) return alert('Reservation end day must be after start');
     this.reservation.totalPrice = this.totalPrice;
     this.reservation.accepted = false;
     this.reservation.startDate = this.changeDate(this.reservation.startDate);
