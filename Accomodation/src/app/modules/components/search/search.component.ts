@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccommodationService } from 'src/app/core/services/accommodation.service'
 import {Accommodation} from "../../../core/models/accommodation";
 import {Router} from "@angular/router";
+import {ReservationService} from "../../../core/services/reservation.service";
 
 @Component({
   selector: 'app-search',
@@ -14,12 +15,12 @@ export class SearchComponent {
   location: number = 0;
   startDate: string = '';
   endDate: string = '';
-  totalPrice: number = 0;
+  totalPrice: any;
 
   searchedAccommodations: Accommodation[] = [];
   accommodationTotalPrices: { [accommodationId: string]: number } = {};
 
-  constructor(private accommodationService: AccommodationService, private router: Router) { }
+  constructor(private accommodationService: AccommodationService, private router: Router, private reservationService: ReservationService) { }
 
   searchAccommodations(): void {
     this.accommodationService.search(this.guestNum, this.location, this.startDate, this.endDate)
@@ -33,16 +34,22 @@ export class SearchComponent {
     this.router.navigate(['/accommodation/', id]);
   }
 
-  // calculateTotalPrice(): void {
-  //   this.searchedAccommodations.forEach((accommodation: Accommodation) => {
-  //     this.accommodationService.getTotalPrice(accommodation.id, this.guestNum, this.startDate, this.endDate)
-  //       .subscribe((totalPrice: number) => {
-  //         this.accommodationTotalPrices[accommodation.id] = totalPrice;
-  //       });
-  //   });
-  // }
+  TotalPrice(id: string): number {
+    this.reservationService.totalPrice(id,
+      this.startDate,
+      this.endDate,
+      this.guestNum).subscribe(res => {
+      this.totalPrice = res
+      console.log(res)
+    });
+    return this.totalPrice;
+  }
 
-
+  Reserve(id: string) {
+    this.router.navigate(['reservations/create', id, this.startDate,
+      this.endDate,
+      this.guestNum]);
+  }
 }
 
 

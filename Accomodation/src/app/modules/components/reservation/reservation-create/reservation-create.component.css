@@ -24,12 +24,6 @@ mat-form-field {
 
 
 }
-mat-form-field :after{
-  color: #e32;
-  content: ' *';
-  display:inline;
-
-}
 
 .container{
 

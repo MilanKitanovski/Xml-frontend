@@ -3,8 +3,8 @@ export class Reservation {
   id: string = "";
   accommodationId    : string = "";
   guestId : string = "";
-  startDate  :  string =  "2022-04-06T14:50:05Z";
-  endDate  :  string =  "2022-04-06T14:50:05Z";
+  startDate  :  string =  "2023-06-16T14:50:05Z";
+  endDate  :  string =  "2023-06-16T14:50:05Z";
   numGuests : number = 0;
   accepted : boolean = false;
   totalPrice : number = 0;
