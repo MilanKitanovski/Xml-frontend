@@ -24,7 +24,6 @@ export class ProfileComponent implements OnInit {
 
   }
   isEditing: boolean = false;
-  userRole: string = '';
   constructor(private tokenService: TokenService,
               private router: Router,
               private profilService: ProfileServiceTsService) { }
@@ -36,22 +35,26 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(this.tokenService.getIdFromToken())
     this.changeInfoForm = new FormGroup({
       name: new FormControl('', Validators.required),  //validacija
       surname: new FormControl('', Validators.required),
       cityId: new FormControl('', Validators.required),
+
     })
-    this.profilService.getCurrentUser().subscribe(response => {
+
+    this.profilService.get(Number(this.tokenService.getIdFromToken())).subscribe(response => {
       this.user = response;
 
       this.changeInfoForm.controls['name'].setValue(response.name);
       this.changeInfoForm.controls['surname'].setValue(response.surname);
       this.changeInfoForm.controls['cityId'].setValue(response.cityId);
-      this.changeInfoForm.controls['email'].setValue(response.email);
   })
 
 
-    }
+
+
+  }
 
   changeInfo() {
     this.user.name = this.changeInfoForm.get("name")?.value;  //preuzimanje param forme

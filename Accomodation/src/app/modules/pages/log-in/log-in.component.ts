@@ -40,7 +40,7 @@ export class LogInComponent implements OnInit{
     this.authService.signIn(this.signInRequest).subscribe({next: data => {
       this.isExist = false;
       console.log(data.text);
-      localStorage.setItem("token", data);
+      localStorage.setItem("token", data.text);
     }, error:error => {
       console.log(error)
       if (error['status'] == 403) {

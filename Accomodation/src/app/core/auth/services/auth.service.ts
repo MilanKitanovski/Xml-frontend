@@ -10,6 +10,7 @@ import {Observable, Subject, throwError} from 'rxjs';
 import {Register} from "../models/register";
 import {catchError} from "rxjs/operators";
 import {SignInRequestPayload} from "../../../modules/pages/log-in/login-request";
+import jwtDecode from "jwt-decode"
 
 @Injectable({
   providedIn: 'root'
@@ -86,8 +87,8 @@ export class AuthService {
   }
 
  isAuthenticated() {
+    return true;
    //return this.user != null && this.token != null && this.tokenValid()
-   return true;
  }
 
   isHost() {
@@ -111,7 +112,7 @@ export class AuthService {
     this.clearAuth()
     this.redirectHome()
   }
-/*
+
   private extractUser(token: string) {
     const decodedToken: Token = jwtDecode(token)
     const authorities = decodedToken.authorities.map((auth: any) => auth.authority)
@@ -126,7 +127,7 @@ export class AuthService {
     const currentDate = new Date()
 
     return currentDate > expirationDate
-  } */
+  }
 
   private loadUser() {
     const user = window.sessionStorage.getItem('user')

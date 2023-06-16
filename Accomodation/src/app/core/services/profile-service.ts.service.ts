@@ -10,14 +10,14 @@ import {User} from "../models/user";
 })
 export class ProfileServiceTsService {
 
-  baseUrl = 'http://localhost:5245'
+  baseUrl = 'http://localhost:5245/api/user'
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
 
 
-  get(id: number): Observable<UserProfileDto> {
-    return this.http.get<UserProfileDto>(this.baseUrl + '/getUserByID/' + id, {headers: this.headers});
+  get(id: number): Observable<any> {
+    return this.http.get(this.baseUrl + '/getUserByID/' + id, {headers: this.headers});
   }
 
   getCurrentUser(): Observable<User> {
@@ -27,7 +27,7 @@ export class ProfileServiceTsService {
     });
     let options = {headers:headers};
     console.log(localStorage.getItem("token"))
-    return this.http.get<User>(this.baseUrl +'/api/user/current', options);
+    return this.http.get<User>(this.baseUrl +'/current', options);
   }
 
   updateUserProfile(user: User): Observable<any>{
@@ -36,7 +36,7 @@ export class ProfileServiceTsService {
       "Authorization" : "Bearer " + localStorage.getItem("token"), //autorizacija
     });
     let options = {headers:headers};
-    return this.http.put(this.baseUrl +'/api/user/update-user/' + user.id, user, options);
+    return this.http.put(this.baseUrl +'/updateProfile', user, options);
   }
 
 }

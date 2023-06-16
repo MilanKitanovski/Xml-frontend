@@ -19,4 +19,15 @@ export class TokenService {
       return localStorage.getItem("token");
     }
   }
+  getIdFromToken():string {
+    let token = window.localStorage.getItem("token")
+    if(token){
+      let tokenSplit = token.split('.')
+      let decoded = decodeURIComponent(encodeURIComponent(window.atob(tokenSplit[1])));
+      let obj = JSON.parse(decoded);
+      return obj['Id'];
+    }
+    return '';
+  }
+
 }

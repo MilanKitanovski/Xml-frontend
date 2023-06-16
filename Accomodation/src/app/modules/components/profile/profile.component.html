@@ -13,14 +13,12 @@
         <span>Surname</span>
         <input [formControlName]="'surname'" type="text" name="surname" value="{{user.surname}}" placeholder="Enter your surname" required>
       </div>
-      <div>
-      <span>E-mail</span> <input [formControlName]="'email'" value="{{user.email}}"  type="text" name="email" placeholder="Enter your e-mail" readonly >
-    </div>
 
     <div>
       <span>Post Number</span>
-      <input [formControlName]="'cityId'" value="{{user.cityId}}"  type="text" name="cityId">
+      <input [formControlName]="'cityId'" value="{{user.cityId}}"  type="text" name="cityId" required>
     </div>
+
 
     <div class="button">
       <input type="submit" value="Update" (click)="changeInfo()">
