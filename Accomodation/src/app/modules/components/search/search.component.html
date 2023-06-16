@@ -12,6 +12,7 @@
   <input type="date" id="endDate" name="endDate" [(ngModel)]="endDate" required>
 
   <button type="submit">Search</button>
+
 </form>
 
 <div *ngIf="searchedAccommodations && searchedAccommodations.length > 0">
@@ -28,6 +29,7 @@
         <p class="sub-title">{{ accommodation.locationId }}</p>
         <p class="price">{{ accommodation.price }}</p>
         <p class="price">{{ accommodationTotalPrices[accommodation.id] }}</p>
+        <button (click)="Reserve(accommodation.id)">Check price</button>
         <div class="more-information">
           <div class="info-and-date-container">
             <div class="box info">

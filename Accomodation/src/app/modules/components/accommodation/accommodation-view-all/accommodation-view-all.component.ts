@@ -32,8 +32,6 @@ public accommodations: Accommodation[] = [];
   ngOnInit(): void {
     this.accommodationService.getAll().subscribe(res => {
       this.accommodations = res;
-      let firstAcommodation = new Accommodation();
-      this.accommodations.push(firstAcommodation);
       this.dataSource.data = this.accommodations;
       /* this.user = this.authService.getUser();
     this.getUserSubscription = this.authService.getUserObservable().subscribe({

@@ -1,4 +1,4 @@
-
+<app-navbar></app-navbar>
 <form class="form">
   <p class="title">Add new accommodation </p>
   <p class="message">Get new customers easily with our app! </p>
@@ -51,6 +51,9 @@
 
     <input value="4" name="r" type="checkbox" id="04" [(ngModel)]="accommodation.autoAcceptReservation">
     <label for="04">Auto accept</label>
+
+    <input value="5" name="r" type="checkbox" id="05" [(ngModel)]="accommodation.priceForOneGuest">
+    <label for="05">Price per guest</label>
   </div>
   <button class="submit" (click)="createAccommodation()">Create</button>
 </form>

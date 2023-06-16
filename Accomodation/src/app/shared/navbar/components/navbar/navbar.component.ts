@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, Host, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../../core/auth/services/auth.service";
 import {User} from "../../../../core/auth/models/user";
-
+import {Register} from "../../../../core/auth/models/register";
 
 //import { AuthService } from 'src/app/core/auth/services/auth.service';
 
@@ -13,68 +13,75 @@ import {User} from "../../../../core/auth/models/user";
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements  OnInit {
+export class NavbarComponent implements OnInit {
 
-  getUserSubscription = new Subscription();
-  user: User | null = null;
-
+  //private authService: AuthService, u konstruktor
   constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+    private http: HttpClient,
+    private router: Router) { }
 
+  ngOnInit(): void {
+
+    /* this.userSub = this.authService.user.subscribe(user =>{
+       this.isLogged = !!user
+       this.name = user.email
+     }); */
+  //  this.User =
+ //   this.name = 'user.email';
+  }
+
+//  private userSub: Subscription;
+  isLogged: boolean = false
+  isToggled: boolean= false
+  name: string = ''
+  User: any;
+
+
+  isLoggedHost():boolean{
+    // if(this.LoggedHost!= name) return false
+    return false;
+  }
+  isLoggedGuest():boolean{
+    // if(this.LoggedGuest!= name) return false
+    return true;
+  }
   ngOnDestroy(): void {
-    this.getUserSubscription.unsubscribe()
+    //  this.userSub.unsubscribe();
   }
 
-  ngOnInit() {
-  /*  this.user = this.authService.getUser();
-    this.getUserSubscription = this.authService.getUserObservable().subscribe({
-      next: (result) => {
-        this.user = result
-      }
-    }) */
+  onHome(){
+    this.router.navigate(['/'])
   }
 
-  login() {
-    this.router.navigate(['/login'])
+  onLogout(){
+    //  this.authService.logout();
   }
 
-  logout() {
-    this.authService.logout()
+  onToggle(){
+    this.isToggled = !this.isToggled;
   }
 
-  goToHomePage() {
-    this.router.navigate([''])
+  ReservationsHost() {
+    this.router.navigate(['/reservations/host/1'])
+
   }
 
-  goToAccountsPage() {
-    this.router.navigate(['/accounts'])
+  ReservationsGuest() {
+    this.router.navigate(['/reservations/guest/1'])
   }
-  goToAccommodationsPage() {
+
+  Accommodations() {
     this.router.navigate(['/accommodations'])
   }
 
+  AccommodationsHost() {
 
-  goToMyAccommodationsPageHost() {
     this.router.navigate(['/accommodations/host'])
   }
 
-  goToReservationsPageHost() {
-    this.router.navigate(['/reservations/host'])
-  }
-  goToReservationsPageGuest() {
-    this.router.navigate(['/reservations/guest'])
-  }
-  goToAccommodationsCreateHost(){
+  Add() {
     this.router.navigate(['/accommodations/create'])
-  }
 
-  loggedHost() {
-    return true;
-  }
-
-  loggedGuest() {
-    return false;
   }
 }
+
