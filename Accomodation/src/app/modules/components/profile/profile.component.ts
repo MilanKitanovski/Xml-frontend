@@ -5,6 +5,7 @@ import {ProfileServiceTsService} from "../../../core/services/profile-service.ts
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpStatusCode } from '@angular/common/http';
 import {TokenService} from "../../../core/services/token.service";
+import {User} from "../../../core/models/user";
 
 @Component({
   selector: 'app-profile',
@@ -13,13 +14,13 @@ import {TokenService} from "../../../core/services/token.service";
 })
 export class ProfileComponent implements OnInit {
   token!: string | null;
-  user : UserProfileDto = {
+  user : User = {
     id: 0,
     name: '',
     surname: '',
     email: '',
     password: '',
-    cityId: '',
+    cityId: 0,
 
   }
   isEditing: boolean = false;
@@ -40,11 +41,13 @@ export class ProfileComponent implements OnInit {
       surname: new FormControl('', Validators.required),
       cityId: new FormControl('', Validators.required),
     })
-    this.profilService.get(this.user.id).subscribe(response => {
+    this.profilService.getCurrentUser().subscribe(response => {
       this.user = response;
 
       this.changeInfoForm.controls['name'].setValue(response.name);
       this.changeInfoForm.controls['surname'].setValue(response.surname);
+      this.changeInfoForm.controls['cityId'].setValue(response.cityId);
+      this.changeInfoForm.controls['email'].setValue(response.email);
   })
 
 
@@ -54,6 +57,7 @@ export class ProfileComponent implements OnInit {
     this.user.name = this.changeInfoForm.get("name")?.value;  //preuzimanje param forme
     this.user.surname = this.changeInfoForm.get("surname")?.value;
     this.user.cityId = this.changeInfoForm.get("cityId")?.value;
+
     this.profilService.updateUserProfile(this.user).subscribe((response: HttpStatusCode) => {
       if(HttpStatusCode.Ok){
         this.successfully = true

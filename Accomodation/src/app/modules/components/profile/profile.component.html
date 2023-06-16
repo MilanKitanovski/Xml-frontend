@@ -13,17 +13,18 @@
         <span>Surname</span>
         <input [formControlName]="'surname'" type="text" name="surname" value="{{user.surname}}" placeholder="Enter your surname" required>
       </div>
-
-      <span>E-mail</span> <input [formControlName]="'email'" value="{{user.email}}"  type="text" name="email" placeholder="Enter your e-mail" required >
+      <div>
+      <span>E-mail</span> <input [formControlName]="'email'" value="{{user.email}}"  type="text" name="email" placeholder="Enter your e-mail" readonly >
     </div>
 
     <div>
-      <span>Password</span>
-      <input [formControlName]="'password'" value="{{user.password}}"  type="password" name="password">
+      <span>Post Number</span>
+      <input [formControlName]="'cityId'" value="{{user.cityId}}"  type="text" name="cityId">
     </div>
 
     <div class="button">
       <input type="submit" value="Update" (click)="changeInfo()">
+    </div>
     </div>
 
   </form>
