@@ -49,7 +49,9 @@ export class ProfileComponent implements OnInit {
       this.changeInfoForm.controls['name'].setValue(response.name);
       this.changeInfoForm.controls['surname'].setValue(response.surname);
       this.changeInfoForm.controls['cityId'].setValue(response.cityId);
-  })
+      this.changeInfoForm.controls['email'].setValue(response.email);
+
+    })
 
 
 

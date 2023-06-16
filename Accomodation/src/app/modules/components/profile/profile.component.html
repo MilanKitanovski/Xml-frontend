@@ -19,9 +19,15 @@
       <input [formControlName]="'cityId'" value="{{user.cityId}}"  type="text" name="cityId" required>
     </div>
 
+      <div>
+        <span>Email</span>
+        <input [formControlName]="'email'" value="{{user.email}}"  type="text" name="email" readonly>
+      </div>
+
 
     <div class="button">
       <input type="submit" value="Update" (click)="changeInfo()">
+      <input type="submit" value="Delete Account">
     </div>
     </div>
 
