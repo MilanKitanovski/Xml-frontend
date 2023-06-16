@@ -3,11 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {Reservation} from "../models/reservation";
+import {Register} from "../auth/models/register";
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
-  apiHost: string = 'http://localhost:5028/api/reservation';
+  apiHost: string = 'http://localhost:8080/reservation';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -43,7 +44,7 @@ export class ReservationService {
 );
 }
 
-//notAvailableDates{id}
+///reservation/notAvailableDates{id}
   notAvailableDates(id: number): Observable<Date[]> {
     return this.http.get<Date[]>(this.apiHost + '/notAvailableDates' + id, {headers: this.headers}).pipe(
       catchError(this.handleError)
@@ -59,4 +60,15 @@ export class ReservationService {
     return this.http.put<any>(this.apiHost + '/accept' , reservation, {headers: this.headers});
   }
 
+  totalPrice(accommodationId: string, startDate: string, endDate: string, numGuests: number) :  Observable<any> {
+    return this.http.get<any>(this.apiHost + '/totalPrice'+'/' + accommodationId
+      +'/' + startDate +'/' + endDate +'/' + numGuests , {headers: this.headers}).pipe(
+      catchError(this.handleError)
+    );}
+  register(register : Register) : Observable<any> {
+
+    return this.http.post<Register>('http://localhost:8080/users/register',register, {headers: this.headers}).pipe(
+      catchError(this.handleError)
+    );
+  }
 }

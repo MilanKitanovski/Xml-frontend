@@ -11,6 +11,7 @@ import {AccommodationCreateComponent} from "./accommodation-create/accommodation
 import {AccommodationViewComponent} from "./accommodation-view/accommodation-view.component";
 import { AccommodationViewAllComponent } from './accommodation-view-all/accommodation-view-all.component';
 import { AccommodationHostComponent } from './accommodation-host/accommodation-host.component';
+import {SearchComponent} from "../search/search.component";
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
     AccommodationViewComponent,
     AccommodationComponent,
     AccommodationViewAllComponent,
-    AccommodationHostComponent
+    AccommodationHostComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,

@@ -10,12 +10,16 @@ import {NavbarModule} from "../../../shared/navbar/navbar.module";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { ReservationHostComponent } from './reservation-host/reservation-host.component';
 import {FooterModule} from "../../../shared/footer/footer.module";
+import { ReservationSearchComponent } from './reservation-search/reservation-search.component';
+import {InputModule} from "../../../shared/ui/input/input.module";
 
 
 const routes: Routes = [
-  { path: 'reservations/guest', component: ReservationTableComponent },
-  { path: 'reservations/create', component: ReservationCreateComponent },
-  {path : 'reservations/host', component: ReservationHostComponent}
+  { path: 'reservations/guest/:id', component: ReservationTableComponent },
+  { path: 'reservations/create/:id', component: ReservationCreateComponent },
+  {path : 'reservations/host/:id', component: ReservationHostComponent},
+  {path : 'reservations/create/:id/:start/:end/:number', component: ReservationSearchComponent}
+
 
 ];
 
@@ -23,18 +27,20 @@ const routes: Routes = [
   declarations: [
     ReservationTableComponent,
     ReservationCreateComponent,
-    ReservationHostComponent
+    ReservationHostComponent,
+    ReservationSearchComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    NavbarModule,
-    MatDatepickerModule,
-    FooterModule
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes),
+        NavbarModule,
+        MatDatepickerModule,
+        FooterModule,
+        InputModule
+    ],
   exports: [RouterModule, ReservationTableComponent, ReservationCreateComponent]
 })
 export class ReservationModule { }

@@ -14,6 +14,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {LogInComponent} from "./modules/pages/log-in/log-in.component";
 import {RegisterComponent} from "./modules/pages/register/register.component";
 import { ProfileComponent } from './modules/components/profile/profile.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { ProfileComponent } from './modules/components/profile/profile.component
         HospitalModule,
         ReservationModule,
         AccommodationModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
     ],
     providers: [],
     exports: [

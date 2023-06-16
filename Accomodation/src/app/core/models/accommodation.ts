@@ -8,6 +8,7 @@ export class Accommodation {
   minGuests : number| undefined;
   maxGuests : number| undefined;
   autoAcceptReservation : boolean  |undefined;
+  priceForOneGuest: boolean  |undefined;
   price : number | undefined;
   wifi : boolean |undefined;
   freeParking : boolean |undefined;
@@ -25,7 +26,8 @@ export class Accommodation {
       this.price = obj.price;
       this.wifi = obj.wifi;
       this.kitchen = obj.kitchen;
-      this.freeParking = obj.freeParking;}
+      this.freeParking = obj.freeParking;
+    this.priceForOneGuest = obj.priceForOneGuest;}
 
   }
 }

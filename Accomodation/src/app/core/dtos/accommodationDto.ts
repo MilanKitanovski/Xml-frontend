@@ -11,6 +11,7 @@ export class AccommodationDto {
   wifi : boolean |undefined;
   freeParking : boolean |undefined;
   kitchen : boolean |undefined;
+  priceForOneGuest: boolean  |undefined;
   public constructor(obj?: any) {
     if (obj) {
       this.hostId = obj.hostId;
@@ -23,7 +24,8 @@ export class AccommodationDto {
       this.price = obj.price;
       this.wifi = obj.wifi;
       this.kitchen = obj.kitchen;
-      this.freeParking = obj.freeParking;}
+      this.freeParking = obj.freeParking;
+    this.priceForOneGuest = obj.priceForOneGuest;}
 
   }
 }

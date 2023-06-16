@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   registerAsGuest() {
-    this.registerForm.userType = 0;
+    this.registerForm.userType = 1;
     this.authService.register(this.registerForm).subscribe({
       next: res => {
         console.log(res);
@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerAsHost() {
+    this.registerForm.userType = 0;
     this.authService.register(this.registerForm).subscribe({
       next: res => {
         console.log(res);
