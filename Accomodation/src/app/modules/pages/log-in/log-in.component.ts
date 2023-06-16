@@ -41,7 +41,8 @@ export class LogInComponent implements OnInit{
       this.isExist = false;
       console.log(data.text);
       localStorage.setItem("token", data.text);
-    }, error:error => {
+      this.router.navigate(['/profile'])
+      }, error:error => {
       console.log(error)
       if (error['status'] == 403) {
         this.isExist = true;

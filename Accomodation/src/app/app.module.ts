@@ -15,25 +15,27 @@ import {LogInComponent} from "./modules/pages/log-in/log-in.component";
 import {RegisterComponent} from "./modules/pages/register/register.component";
 import { ProfileComponent } from './modules/components/profile/profile.component';
 import {FormsModule} from "@angular/forms";
+import {NavbarModule} from "./shared/navbar/navbar.module";
 
 @NgModule({
     declarations: [
         AppComponent,
         ProfileComponent,
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        MaterialModule,
-        PagesModule,
-        HospitalModule,
-        ReservationModule,
-        AccommodationModule,
-        ReactiveFormsModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MaterialModule,
+    PagesModule,
+    HospitalModule,
+    ReservationModule,
+    AccommodationModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NavbarModule
+  ],
     providers: [],
     exports: [
     ],
