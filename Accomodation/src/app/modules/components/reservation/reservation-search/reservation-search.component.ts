@@ -11,6 +11,8 @@ import {ReservationService} from "../../../../core/services/reservation.service"
 })
 export class ReservationSearchComponent implements OnInit {
 
+  public reservedDates: Date[] = [];
+  public reservedDateSliced: Date[] = [];
   public totalPrice: any;
   public reservation: ReservationDto = new ReservationDto();
   constructor(private accommodationService: AccommodationService, private route: ActivatedRoute,private  reservationService: ReservationService, private router: Router) {
@@ -30,9 +32,11 @@ export class ReservationSearchComponent implements OnInit {
     });
   }
 
-  public acceptReservation(id: number) {
-    //automatsko prihvatanje
-    this.reservationService.autoAccept(this.reservation).subscribe();
+  dateFilters: (date: Date | null) => boolean = (date: Date | null) => {
+    if (!date) return false; // early exit if date is null
+    let excludedDates: Date[] = this.reservedDateSliced;
+    const dateString = date.toDateString();
+    return !excludedDates.some(excludedDate => excludedDate.toDateString() === dateString);
   }
   private isValidInput(): boolean {
     return this.reservation?.numGuests.toString() != ''
@@ -43,7 +47,14 @@ export class ReservationSearchComponent implements OnInit {
       this.reservation.startDate = (params['start']);
         this.reservation.endDate=(params['end']);
           this.reservation.numGuests=(params['number']);
+
+      this.reservationService.notAvailableDates(params['id']).subscribe(res => {
+        this.reservedDates = res;
+        this.reservedDateSliced = this.reservedDates.map(date =>new Date(date))
+        console.log(this.reservedDateSliced);
+      });
     });
+
   }
 
   TotalPrice() {

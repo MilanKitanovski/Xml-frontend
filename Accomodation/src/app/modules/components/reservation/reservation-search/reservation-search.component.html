@@ -1,11 +1,25 @@
 <app-navbar></app-navbar><div class="container">
-  <mat-form-field appearance="outline">
+  <mat-form-field>
     <mat-label>Start date</mat-label>
-    <input matInput [(ngModel)]="reservation.startDate">
+    <input matInput
+           #resultPickerModel="ngModel"
+           [matDatepicker]="resultPicker"
+           [(ngModel)]="reservation.startDate"
+           [matDatepickerFilter]="dateFilters">
+    <mat-datepicker-toggle matSuffix [for]="resultPicker"></mat-datepicker-toggle>
+    <mat-datepicker #resultPicker>
+    </mat-datepicker>
   </mat-form-field><br>
-  <mat-form-field appearance="outline">
+  <mat-form-field>
     <mat-label>End date</mat-label>
-    <input matInput [(ngModel)]="reservation.endDate">
+    <input matInput
+           #resultPickerModel="ngModel"
+           [matDatepicker]="resultPickers"
+           [(ngModel)]="reservation.endDate"
+           [matDatepickerFilter]="dateFilters">
+    <mat-datepicker-toggle matSuffix [for]="resultPickers"></mat-datepicker-toggle>
+    <mat-datepicker #resultPickers>
+    </mat-datepicker>
   </mat-form-field><br>
   <mat-form-field appearance="outline">
     <mat-label>Guest number</mat-label>

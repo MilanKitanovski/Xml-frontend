@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router) { }
+  token = localStorage.getItem("token")
 
   ngOnInit(): void {
 
@@ -53,8 +54,11 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
+  profile(){
+    this.router.navigate(['/profile'])
+  }
   onLogout(){
-    //  this.authService.logout();
+    localStorage.clear();
   }
 
   onToggle(){

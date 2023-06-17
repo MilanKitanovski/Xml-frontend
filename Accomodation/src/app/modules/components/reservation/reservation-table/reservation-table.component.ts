@@ -34,9 +34,8 @@ export class ReservationTableComponent implements OnInit {
     })
   }
   public deleteReservation(reservation: Reservation) {
-
-   // if (!this.LessThanTwoDays(reservation)) return alert('You can not cancel because reservation is in less than 2 days');
     this.reservationService.cancel(reservation).subscribe(res => {
+      if(!res) alert("You can't cancel a reservation day prior");
       this.reservationService.getByGuestId(1).subscribe(res => {
         this.reservations = res;
         this.dataSource.data = this.reservations;
@@ -47,16 +46,4 @@ export class ReservationTableComponent implements OnInit {
 
   }
 
-  accepted(reservation : Reservation) {
-    if(reservation.accepted== true)
-    {
-      return true;
-    }
-    return false;
-  }
-
-  private LessThanTwoDays(reservation: Reservation): boolean {
-    let dateTime = Date.now();
-    return false ;
-  }
 }

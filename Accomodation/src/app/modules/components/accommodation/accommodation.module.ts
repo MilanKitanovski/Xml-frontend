@@ -12,6 +12,7 @@ import {AccommodationViewComponent} from "./accommodation-view/accommodation-vie
 import { AccommodationViewAllComponent } from './accommodation-view-all/accommodation-view-all.component';
 import { AccommodationHostComponent } from './accommodation-host/accommodation-host.component';
 import {SearchComponent} from "../search/search.component";
+import {FooterModule} from "../../../shared/footer/footer.module";
 
 
 const routes: Routes = [
@@ -30,15 +31,16 @@ const routes: Routes = [
     AccommodationHostComponent,
     SearchComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    NavbarModule,
-    MatDatepickerModule
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes),
+        NavbarModule,
+        MatDatepickerModule,
+        FooterModule
+    ],
   exports: [RouterModule, AccommodationComponent]
 })
 export class AccommodationModule { }

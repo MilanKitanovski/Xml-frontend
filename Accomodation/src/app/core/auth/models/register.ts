@@ -8,7 +8,7 @@ export class Register {
   password: string = "";
   name: string = "";
   surname: string = "";
-  cityId: number = 21000;
+  cityId: number = 0;
   userType: number = 1;
 
   constructor(email: string, password: string,

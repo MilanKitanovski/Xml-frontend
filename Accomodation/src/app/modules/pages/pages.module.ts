@@ -9,7 +9,8 @@ import { OurServicesComponent } from './home/our-services/our-services.component
 import {FooterModule} from "../../shared/footer/footer.module";
 import {AccommodationModule} from "../components/accommodation/accommodation.module";
 import {InputModule} from "../../shared/ui/input/input.module";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -24,7 +25,8 @@ import {FormsModule} from "@angular/forms";
         FooterModule,
         AccommodationModule,
         InputModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class PagesModule { }

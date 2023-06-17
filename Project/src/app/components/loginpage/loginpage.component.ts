@@ -50,12 +50,4 @@ export class LoginpageComponent implements OnInit {
       }
     });
   }
-
-  // login(){
-
-  // }
-
-  // onChange(event:any){
-
-  // }
 }

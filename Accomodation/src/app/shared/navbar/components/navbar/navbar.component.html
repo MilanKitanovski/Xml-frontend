@@ -51,7 +51,7 @@
           <h2>{{ name }}</h2>
         </div>
         <hr />
-        <a routerLink="/profile" class="sub-menu-link">
+        <a routerLink="/profile" (click)="profile()" class="sub-menu-link" [ngClass]="token == ''? {'display':'block'} : {'display':'none'}">
           <p>My Profile</p>
           <span>></span>
         </a>
