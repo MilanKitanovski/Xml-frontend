@@ -10,7 +10,7 @@ import {User} from "../models/user";
 })
 export class ProfileServiceTsService {
 
-  baseUrl = 'http://localhost:5245/api/user'
+  baseUrl = 'http://localhost:8080/users'
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }

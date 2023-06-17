@@ -1,5 +1,7 @@
 .form {
   display: flex;
+  margin-left: 450px;
+  margin-top: 80px;
   flex-direction: column;
   gap: 10px;
   max-width: 350px;

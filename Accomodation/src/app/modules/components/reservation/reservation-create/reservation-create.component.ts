@@ -31,19 +31,13 @@ public reservedDateSliced: Date[] = [];
     if (this.reservation.endDate < this.reservation.startDate ) return alert('Reservation end day must be after start');
     this.reservation.totalPrice = this.totalPrice;
     this.reservation.accepted = false;
-    this.reservation.startDate = this.changeDate(this.reservation.startDate);
-    this.reservation.endDate = this.changeDate(this.reservation.endDate);
+    this.reservation.startDate = this.reservation.startDate;
+    this.reservation.endDate = this.reservation.endDate;
     this.reservationService.createReservation(this.reservation).subscribe(res => {
     //  this.router.navigate(['/reservations']);
       alert("created pending reservation with id "+res.id+ " for " +res.numGuests +" guests!")
     });
   }
-
-
-  nonAvailableDates: Date[] = [
-    new Date('2023-06-27'),
-    new Date('2023-06-26')
-  ];
 
   disabled: boolean = false;
 
@@ -60,7 +54,6 @@ public reservedDateSliced: Date[] = [];
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.reservation.accommodationId = (params['id']);
-
       this.reservationService.notAvailableDates(params['id']).subscribe(res => {
         this.reservedDates = res;
         this.reservedDateSliced = this.reservedDates.map(date =>new Date(date))

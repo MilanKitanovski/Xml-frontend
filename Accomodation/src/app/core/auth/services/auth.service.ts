@@ -35,7 +35,7 @@ export class AuthService {
 
   signIn(signInRequest: SignInRequestPayload): Observable<any> {
     return this.http.post<any>(
-      "http://localhost:5245/api/auth/login",
+      "http://localhost:8080/auth/login",
       signInRequest
     );
   }
@@ -50,7 +50,7 @@ export class AuthService {
 
   logout() {
     this.http
-      .get<LoginResponse>("http://localhost:5245/api/user/logout")
+      .get<LoginResponse>("http://localhost:8080/users/logout")
       .subscribe({
         next: (response) => {
           this.clearAuthAndRedirectHome();
