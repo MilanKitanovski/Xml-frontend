@@ -4,6 +4,7 @@ import {Reservation} from "../../../../core/models/reservation";
 import {ReservationService} from "../../../../core/services/reservation.service";
 import {Router} from "@angular/router";
 import {User} from "../../../../core/auth/models/user";
+import {ProfileServiceTsService} from "../../../../core/services/profile-service.ts.service";
 
 @Component({
   selector: 'app-reservation-table',
@@ -19,7 +20,8 @@ export class ReservationTableComponent implements OnInit {
   public displayedColumns = ['id', 'accommodationId', 'guestId', 'startDate', 'endDate', 'numGuests', 'accepted', 'totalPrice', 'delete'];
   public reservations: Reservation[] = [];
 
-  constructor(private reservationService: ReservationService, private router: Router) { }
+  constructor(private reservationService: ReservationService, private profileService: ProfileServiceTsService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.reservationService.getByGuestId(1).subscribe(res => {
@@ -39,6 +41,9 @@ export class ReservationTableComponent implements OnInit {
       this.reservationService.getByGuestId(1).subscribe(res => {
         this.reservations = res;
         this.dataSource.data = this.reservations;
+      })
+      this.profileService.get(1).subscribe(res => {
+       console.log(res)
       })
     })
   }
