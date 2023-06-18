@@ -4,6 +4,7 @@ import {Reservation} from "../../../../core/models/reservation";
 import {ReservationService} from "../../../../core/services/reservation.service";
 import {Router} from "@angular/router";
 import {User} from "../../../../core/auth/models/user";
+import {ProfileServiceTsService} from "../../../../core/services/profile-service.ts.service";
 
 @Component({
   selector: 'app-reservation-host',
@@ -16,10 +17,11 @@ export class ReservationHostComponent  implements OnInit {
   pageTitle = 'Flights List';
   errorMessage = '';
   public dataSource = new MatTableDataSource<Reservation>();
-  public displayedColumns = ['id', 'accommodationId', 'guestId', 'startDate', 'endDate', 'numGuests', 'accepted', 'totalPrice','accept'];
+  public displayedColumns = ['id', 'accommodationId', 'guestId', 'startDate', 'endDate', 'numGuests', 'accepted', 'totalPrice','cancelCount','accept'];
   public reservations: Reservation[] = [];
 
-  constructor(private reservationService: ReservationService, private router: Router) { }
+  constructor(private reservationService: ReservationService,
+              private profilService : ProfileServiceTsService,private router: Router) { }
 
   ngOnInit(): void {
     this.reservationService.getByHostId(1).subscribe(res => {
@@ -56,5 +58,10 @@ export class ReservationHostComponent  implements OnInit {
       return false;
     }
     return true;
+  }
+  CancelCount(reservation: Reservation) {
+    this.profilService.get(Number(reservation.guestId)).subscribe(response => {
+      return response.cancelCount;
+    })
   }
 }

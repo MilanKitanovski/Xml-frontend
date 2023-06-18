@@ -28,6 +28,10 @@
         <h2 class="title">{{ accommodation.name }}</h2>
         <p class="sub-title">{{ accommodation.locationId }}</p>
         <p class="price">{{ accommodation.price }}</p>
+        <p class="price" *ngIf="accommodation.priceForOneGuest"> Prices are per guest, check total price </p>
+       <p class="price" *ngIf="!accommodation.priceForOneGuest"> Price per day is same for any number of guests</p>
+        <p class="price" *ngIf="accommodation.autoAcceptReservation"> Accommodation is automatically accepting reservations! You can cancel free of charge until 1 day before arrival</p>
+        <p class="price" *ngIf="!accommodation.autoAcceptReservation"> Create pending reservation and wait until host approves! You can cancel free of charge until 1 day before arrival</p>
         <p class="price">{{ accommodationTotalPrices[accommodation.id] }}</p>
         <button (click)="Reserve(accommodation.id)">Check price</button>
         <div class="more-information">

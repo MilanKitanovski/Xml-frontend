@@ -50,6 +50,7 @@ export class SearchComponent {
       this.endDate,
       this.guestNum]);
   }
+
 }
 
 

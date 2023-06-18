@@ -25,10 +25,8 @@ export class ReservationSearchComponent implements OnInit {
 
   public createReservation(){
     if (!this.isValidInput()) return alert('invalid input');
-//provera da li se automatski prihvata
     this.reservationService.createReservation(this.reservation).subscribe(res => {
-      //  this.router.navigate(['/reservations']);
-      alert("created pending reservation with id "+res.id+ " for " +res.numGuests +" guests!")
+      alert("created pending reservation with id "+res.id+ " from date: " +res.startDate +" to : "  +res.endDate)
     });
   }
 

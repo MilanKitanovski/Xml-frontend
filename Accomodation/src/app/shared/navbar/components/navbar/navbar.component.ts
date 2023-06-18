@@ -40,11 +40,11 @@ export class NavbarComponent implements OnInit {
 
   isLoggedHost():boolean{
     // if(this.LoggedHost!= name) return false
-    return false;
+    return true;
   }
   isLoggedGuest():boolean{
     // if(this.LoggedGuest!= name) return false
-    return true;
+    return false;
   }
   ngOnDestroy(): void {
     //  this.userSub.unsubscribe();
@@ -85,6 +85,11 @@ export class NavbarComponent implements OnInit {
 
   Add() {
     this.router.navigate(['/accommodations/create'])
+
+  }
+  //profile
+  Profile() {
+    this.router.navigate(['/profile'])
 
   }
 }

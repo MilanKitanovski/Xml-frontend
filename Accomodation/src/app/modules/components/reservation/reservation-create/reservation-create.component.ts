@@ -35,7 +35,7 @@ public reservedDateSliced: Date[] = [];
     this.reservation.endDate = this.reservation.endDate;
     this.reservationService.createReservation(this.reservation).subscribe(res => {
     //  this.router.navigate(['/reservations']);
-      alert("created pending reservation with id "+res.id+ " for " +res.numGuests +" guests!")
+      alert("created pending reservation with id "+res.id+ " from date: " +res.startDate +" to : "  +res.endDate)
     });
   }
 
