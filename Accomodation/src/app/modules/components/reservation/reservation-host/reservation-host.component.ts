@@ -28,12 +28,6 @@ export class ReservationHostComponent  implements OnInit {
       this.reservations = res.sort((a,b) => 0 - (a > b ? 1 : -1));
       //opadajuce .sort((a,b) => 0 - (a > b ? -1 : 1));
       this.dataSource.data = this.reservations;
-      /* this.user = this.authService.getUser();
-    this.getUserSubscription = this.authService.getUserObservable().subscribe({
-      next: (result) => {
-        this.user = result
-      }
-    })*/
     })
   }
 
@@ -66,9 +60,9 @@ export class ReservationHostComponent  implements OnInit {
 
   CancelCount(guestId: any):number {
     let count = 0;
-    this.profilService.get(guestId).subscribe(res => {
-      count = res.get().cancelCount;
-    })
+   // this.profilService.get(guestId).subscribe(res => {
+  //    count = res.get().cancelCount;
+  //  })
     return count;
   }
 
