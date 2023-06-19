@@ -15,7 +15,10 @@ export class AccommodationCreateComponent implements OnInit {
 
 
   public accommodation: AccommodationDto = new AccommodationDto();
+
   selectedImage: string | null = null;
+
+
   constructor(private  accommodationService: AccommodationService, private router: Router, private tokenService: TokenService) {
     this.accommodation.hostId = Number(this.tokenService.getIdFromToken());}
 

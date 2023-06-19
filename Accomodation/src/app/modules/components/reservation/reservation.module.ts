@@ -12,13 +12,15 @@ import { ReservationHostComponent } from './reservation-host/reservation-host.co
 import {FooterModule} from "../../../shared/footer/footer.module";
 import { ReservationSearchComponent } from './reservation-search/reservation-search.component';
 import {InputModule} from "../../../shared/ui/input/input.module";
+import {UserInfoComponent} from "../profile/user-info/user-info.component";
 
 
 const routes: Routes = [
   { path: 'reservations/guest/:id', component: ReservationTableComponent },
   { path: 'reservations/create/:id', component: ReservationCreateComponent },
   {path : 'reservations/host/:id', component: ReservationHostComponent},
-  {path : 'reservations/create/:id/:start/:end/:number', component: ReservationSearchComponent}
+  {path : 'reservations/create/:id/:start/:end/:number', component: ReservationSearchComponent},
+  {path : 'info/:id', component: UserInfoComponent}
 
 
 ];

@@ -2,7 +2,14 @@
   <nav>
     <div class="logo">TravelHub</div>
     <ul>
-      <li class="shrink" >
+      <li class="shrink" *ngIf="isLoggedHost()" >
+        <a
+          (click)="Profile()"
+          routerLink="/profile"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">My profile</a>
+      </li>
+      <li class="shrink" *ngIf="isLoggedGuest()" >
         <a
           (click)="Profile()"
           routerLink="/profile"
@@ -37,7 +44,7 @@
           (click)="AccommodationsHost()"  routerLink="/accommodations/host"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
-        >Accommodations</a
+        >Your accommodation</a
         >
       </li>
       <li class="shrink" *ngIf="isLoggedHost()">

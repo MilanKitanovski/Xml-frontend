@@ -3,6 +3,7 @@ import {ReservationDto} from "../../../../core/dtos/reservationDto";
 import {AccommodationService} from "../../../../core/services/accommodation.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ReservationService} from "../../../../core/services/reservation.service";
+import {TokenService} from "../../../../core/services/token.service";
 
 @Component({
   selector: 'app-reservation-search',
@@ -15,9 +16,13 @@ export class ReservationSearchComponent implements OnInit {
   public reservedDateSliced: Date[] = [];
   public totalPrice: any;
   public reservation: ReservationDto = new ReservationDto();
-  constructor(private accommodationService: AccommodationService, private route: ActivatedRoute,private  reservationService: ReservationService, private router: Router) {
-    // this.reservation.accommodationId = '1';
-    this.reservation.guestId = '1';
+  constructor(private accommodationService: AccommodationService,
+              private tokenService: TokenService,
+              private route: ActivatedRoute,
+              private  reservationService: ReservationService,
+              private router: Router) {
+
+    this.reservation.guestId =this.tokenService.getIdFromToken();
     this.reservation.accepted = false;
     this.reservation.totalPrice = 100;}
 
@@ -45,7 +50,6 @@ export class ReservationSearchComponent implements OnInit {
       this.reservation.startDate = (params['start']);
         this.reservation.endDate=(params['end']);
           this.reservation.numGuests=(params['number']);
-
       this.reservationService.notAvailableDates(params['id']).subscribe(res => {
         this.reservedDates = res;
         this.reservedDateSliced = this.reservedDates.map(date =>new Date(date))

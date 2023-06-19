@@ -5,6 +5,7 @@ import {ReservationService} from "../../../../core/services/reservation.service"
 import {Router} from "@angular/router";
 import {User} from "../../../../core/auth/models/user";
 import {ProfileServiceTsService} from "../../../../core/services/profile-service.ts.service";
+import {TokenService} from "../../../../core/services/token.service";
 
 @Component({
   selector: 'app-reservation-table',
@@ -21,11 +22,12 @@ export class ReservationTableComponent implements OnInit {
   public reservations: Reservation[] = [];
   cancelCount: any;
 
-  constructor(private reservationService: ReservationService, private profileService: ProfileServiceTsService,
+  constructor(private reservationService: ReservationService,
+              private ts:TokenService,private profileService: ProfileServiceTsService,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.reservationService.getByGuestId(1).subscribe(res => {
+    this.reservationService.getByGuestId(Number(this.ts.getIdFromToken())).subscribe(res => {
       this.reservations = res;
       this.dataSource.data = this.reservations;
       /* this.user = this.authService.getUser();
@@ -39,11 +41,11 @@ export class ReservationTableComponent implements OnInit {
   public deleteReservation(reservation: Reservation) {
     this.reservationService.cancel(reservation).subscribe(res => {
       if(!res) alert("You can't cancel a reservation day prior");
-      this.reservationService.getByGuestId(1).subscribe(res => {
+      this.reservationService.getByGuestId(Number(this.ts.getIdFromToken())).subscribe(res => {
         this.reservations = res;
         this.dataSource.data = this.reservations;
       })
-      this.profileService.get(1).subscribe(res => {
+      this.profileService.get(Number(this.ts.getIdFromToken())).subscribe(res => {
        console.log(res)
       })
     })

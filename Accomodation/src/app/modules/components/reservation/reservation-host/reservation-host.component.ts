@@ -5,6 +5,7 @@ import {ReservationService} from "../../../../core/services/reservation.service"
 import {Router} from "@angular/router";
 import {User} from "../../../../core/auth/models/user";
 import {ProfileServiceTsService} from "../../../../core/services/profile-service.ts.service";
+import {TokenService} from "../../../../core/services/token.service";
 
 @Component({
   selector: 'app-reservation-host',
@@ -17,25 +18,25 @@ export class ReservationHostComponent  implements OnInit {
   pageTitle = 'Flights List';
   errorMessage = '';
   public dataSource = new MatTableDataSource<Reservation>();
-  public displayedColumns = ['id', 'accommodationId', 'guestId', 'startDate', 'endDate', 'numGuests', 'accepted', 'totalPrice','cancelCount','accept'];
+  public displayedColumns = ['id', 'accommodationId', 'guestId', 'startDate', 'endDate', 'numGuests', 'accepted', 'totalPrice','accept'];
   public reservations: Reservation[] = [];
+  public count: any;
 
   constructor(private reservationService: ReservationService,
-              private profilService : ProfileServiceTsService,private router: Router) { }
+              private profilService : ProfileServiceTsService,
+              private ts:TokenService, private router: Router) { }
 
   ngOnInit(): void {
-    this.reservationService.getByHostId(1).subscribe(res => {
+    this.reservationService.getByHostId(Number(this.ts.getIdFromToken())).subscribe(res => {
       this.reservations = res.sort((a,b) => 0 - (a > b ? 1 : -1));
-      //opadajuce .sort((a,b) => 0 - (a > b ? -1 : 1));
       this.dataSource.data = this.reservations;
     })
   }
 
 
   public acceptReservation(reservation: Reservation ) {
-    //rucno prihvatanje
     this.reservationService.acceptReservation(reservation).subscribe(res => {
-      this.reservationService.getByHostId(1).subscribe(res => {
+      this.reservationService.getByHostId(Number(this.ts.getIdFromToken())).subscribe(res => {
         this.reservations = res;
         this.dataSource.data = this.reservations;
       })
@@ -53,17 +54,15 @@ export class ReservationHostComponent  implements OnInit {
     }
     return true;
   }
- /* CancelCount(reservation: Reservation) {
-    this.profilService.get(Number(reservation.guestId)).subscribe(response => {
-      return response.cancelCount;
-    })}*/
+  /*CancelCount(guestId: any):number {
 
-  CancelCount(guestId: any):number {
-    let count = 0;
-   // this.profilService.get(guestId).subscribe(res => {
-  //    count = res.get().cancelCount;
-  //  })
-    return count;
+    this.profilService.get(guestId).subscribe(res => {
+      this.count = res.get().cancelCount;
+    })
+    return this.count;
+  } */
+
+  chooseGuest(guestId: any) {
+    this.router.navigate(['/info', guestId]);
   }
-
 }

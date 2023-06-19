@@ -5,6 +5,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ReservationDto} from "../../../../core/dtos/reservationDto";
 import {AccommodationService} from "../../../../core/services/accommodation.service";
 import {MatCalendarCellCssClasses, MatDatepicker} from "@angular/material/datepicker";
+import {TokenService} from "../../../../core/services/token.service";
 
 @Component({
   selector: 'app-reservation-create',
@@ -18,9 +19,11 @@ export class ReservationCreateComponent implements OnInit {
   public reservedDates: Date[] = [];
 public reservedDateSliced: Date[] = [];
   minDate = new Date(2023, 5, 16);
-  constructor(private accommodationService: AccommodationService, private route: ActivatedRoute,private  reservationService: ReservationService, private router: Router) {
+  constructor(private accommodationService: AccommodationService,
+              private ts:TokenService,
+              private route: ActivatedRoute,private  reservationService: ReservationService, private router: Router) {
    // this.reservation.accommodationId = '1';
-  this.reservation.guestId = '1';
+  this.reservation.guestId = this.ts.getIdFromToken();
   this.reservation.accepted = false;
  }
 
@@ -34,7 +37,6 @@ public reservedDateSliced: Date[] = [];
     this.reservation.startDate = this.reservation.startDate;
     this.reservation.endDate = this.reservation.endDate;
     this.reservationService.createReservation(this.reservation).subscribe(res => {
-    //  this.router.navigate(['/reservations']);
       alert("created pending reservation with id "+res.id+ " from date: " +res.startDate +" to : "  +res.endDate)
     });
   }
