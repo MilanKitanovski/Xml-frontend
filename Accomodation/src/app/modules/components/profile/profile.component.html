@@ -4,22 +4,22 @@
      <div>
 
       <div class="input_container">
-        <span>Name</span>
+        <label class="input_label">Name</label>
         <input class="input_field" [formControlName]="'name'" type="text" name="name" value="{{user.name}}" placeholder="Enter your name" required>
       </div>
 
       <div class="input_container">
-        <span>Surname</span>
+        <label class="input_label">Surname</label>
         <input class="input_field" [formControlName]="'surname'" type="text" name="surname" value="{{user.surname}}" placeholder="Enter your surname" required>
       </div>
 
     <div class="input_container">
-      <span>Post Number</span>
+      <label class="input_label">Post Number</label>
       <input class="input_field" [formControlName]="'cityId'" value="{{user.cityId}}" placeholder="Enter a post number" type="number" name="cityId" required>
     </div>
 
       <div class="input_container">
-        <span>Email</span>
+        <label class="input_label">Email</label>
         <input class="input_field" [formControlName]="'email'" value="{{user.email}}"  type="text" name="email" readonly>
       </div>
 
