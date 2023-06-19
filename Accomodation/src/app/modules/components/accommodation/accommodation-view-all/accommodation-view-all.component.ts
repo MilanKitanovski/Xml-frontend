@@ -19,10 +19,8 @@ export class AccommodationViewAllComponent implements OnInit {
 
   user: User | null = null;
   errorMessage = '';
-  image:string = '';
 
-  path: string = "url('src/assets/images/" + this.image + ");";
-public accommodations: Accommodation[] = [];
+  public accommodations: Accommodation[] = [];
 
   public dataSource = new MatTableDataSource<Accommodation>();
   accommodation: Accommodation | undefined;

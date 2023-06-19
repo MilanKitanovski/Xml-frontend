@@ -15,10 +15,17 @@ export class AccommodationCreateComponent implements OnInit {
 
 
   public accommodation: AccommodationDto = new AccommodationDto();
+
+  selectedImage: string | null = null;
+
+
   constructor(private  accommodationService: AccommodationService, private router: Router, private tokenService: TokenService) {
     this.accommodation.hostId = Number(this.tokenService.getIdFromToken());}
 
   public createAccommodation(){
+    if (this.selectedImage) {
+      this.accommodation.pictures = this.selectedImage;
+    }
     this.accommodationService.create(this.accommodation).subscribe({
         next: res => {
           console.log(res);
@@ -31,10 +38,18 @@ export class AccommodationCreateComponent implements OnInit {
       }
     );
   }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.selectedImage = reader.result as string; // Save the base64-encoded image data to the selectedImage property
+    };
+    reader.readAsDataURL(file);
+  }
 
   private isValidInput(): boolean {
 
-  return true;}
+    return true;}
   ngOnInit(): void {
   }
 
