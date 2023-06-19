@@ -52,7 +52,6 @@ export class AccommodationService {
   }
 
   getByHostId(id: number): Observable<Accommodation[]> {
-    //dodaj u ocelot
-  return this.http.get<Accommodation[]>(this.apiHost + '/all', {headers: this.headers});
+  return this.http.get<Accommodation[]>(this.apiHost +'/host' + id, {headers: this.headers});
 }
 }
