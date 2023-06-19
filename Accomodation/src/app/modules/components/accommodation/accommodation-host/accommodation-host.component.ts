@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-accommodation-host',
   templateUrl: './accommodation-host.component.html',
-  styleUrls: ['./accommodation-host.component.css']
+  styleUrls: ['./accommodation-host.component.scss']
 })
 export class AccommodationHostComponent implements OnInit {
 

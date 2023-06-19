@@ -1,4 +1,4 @@
-import { CommonModule } from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
@@ -39,7 +39,8 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         NavbarModule,
         MatDatepickerModule,
-        FooterModule
+        FooterModule,
+      NgOptimizedImage
     ],
   exports: [RouterModule, AccommodationComponent]
 })
