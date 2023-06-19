@@ -1,34 +1,33 @@
-<app-navbar></app-navbar>
-<div>
-  <form [formGroup]="changeInfoForm" (ngSubmit)="changeInfo">
-    <div>
+    <app-navbar></app-navbar>
+    <form class="form_container" [formGroup]="changeInfoForm" (ngSubmit)="changeInfo">
 
-      <div>
+     <div>
+
+      <div class="input_container">
         <span>Name</span>
-        <input [formControlName]="'name'" type="text" name="name" value="{{user.name}}" placeholder="Enter your name" required>
+        <input class="input_field" [formControlName]="'name'" type="text" name="name" value="{{user.name}}" placeholder="Enter your name" required>
       </div>
 
-      <div>
+      <div class="input_container">
         <span>Surname</span>
-        <input [formControlName]="'surname'" type="text" name="surname" value="{{user.surname}}" placeholder="Enter your surname" required>
+        <input class="input_field" [formControlName]="'surname'" type="text" name="surname" value="{{user.surname}}" placeholder="Enter your surname" required>
       </div>
 
-    <div>
+    <div class="input_container">
       <span>Post Number</span>
-      <input [formControlName]="'cityId'" value="{{user.cityId}}"  type="text" name="cityId" required>
+      <input class="input_field" [formControlName]="'cityId'" value="{{user.cityId}}" placeholder="Enter a post number" type="number" name="cityId" required>
     </div>
 
-      <div>
+      <div class="input_container">
         <span>Email</span>
-        <input [formControlName]="'email'" value="{{user.email}}"  type="text" name="email" readonly>
+        <input class="input_field" [formControlName]="'email'" value="{{user.email}}"  type="text" name="email" readonly>
       </div>
 
 
     <div class="button">
-      <input type="submit" value="Update" (click)="changeInfo()">
-      <input type="submit" value="Delete Account">
+      <input class="sign-in_ggl" type="submit" value="Update" (click)="changeInfo()">
+      <input class="sign-in_ggl" type="submit" value="Delete Account">
     </div>
     </div>
-
   </form>
-</div>
+

@@ -1,17 +1,17 @@
-<form (ngSubmit)="signin()" [formGroup]="loginForm" > <!--(ngSubmit)="login()"-->
+<form class="form_container" (ngSubmit)="signin()" [formGroup]="loginForm" > <!--(ngSubmit)="login()"-->
   <div>
-    <div>
-      <label>Email</label>
-      <input [formControlName]="'email'" type="text" required>
+    <div class="input_container">
+      <label class="input_label">Email</label>
+      <input class="input_field" [formControlName]="'email'" type="text" required>
     </div>
 
-    <div>
-      <label>Password</label>
-      <input  [formControlName]="'password'" type="password"  required >
+    <div class="input_container">
+      <label class="input_label">Password</label>
+      <input class="input_field" [formControlName]="'password'" type="password"  required >
     </div>
     <div>
-      <button  type="submit">Login</button> <!-- (click)="login()"-->
-      <button type="submit" (click)="register()">Register</button>
+      <button class="sign-in_ggl" type="submit">Login</button> <!-- (click)="login()"-->
+      <button class="sign-in_ggl" type="submit" (click)="register()">Register</button>
     </div>
   </div>
 </form>
