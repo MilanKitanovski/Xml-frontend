@@ -17,9 +17,9 @@ import {FooterModule} from "../../../shared/footer/footer.module";
 
 const routes: Routes = [
   { path: 'accommodations', component: AccommodationViewAllComponent },
-  { path: 'accommodations/create', component: AccommodationCreateComponent },
+  { path: 'accommodations/create/:id', component: AccommodationCreateComponent },
   {path : 'accommodation/:id', component: AccommodationViewComponent},
-  {path : 'accommodations/host', component:AccommodationHostComponent}
+  {path : 'accommodations/host/:id', component:AccommodationHostComponent}
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ import {ReservationService} from "../../../../core/services/reservation.service"
 import {Router} from "@angular/router";
 import {AccommodationDto} from "../../../../core/dtos/accommodationDto";
 import {AccommodationService} from "../../../../core/services/accommodation.service";
+import {TokenService} from "../../../../core/services/token.service";
 
 @Component({
   selector: 'app-accommodation-create',
@@ -14,8 +15,8 @@ export class AccommodationCreateComponent implements OnInit {
 
 
   public accommodation: AccommodationDto = new AccommodationDto();
-  constructor(private  accommodationService: AccommodationService, private router: Router) {
-    this.accommodation.hostId = 1;}
+  constructor(private  accommodationService: AccommodationService, private router: Router, private tokenService: TokenService) {
+    this.accommodation.hostId = Number(this.tokenService.getIdFromToken());}
 
   public createAccommodation(){
     this.accommodationService.create(this.accommodation).subscribe({
