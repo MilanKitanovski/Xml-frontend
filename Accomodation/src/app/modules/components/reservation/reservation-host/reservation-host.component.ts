@@ -59,9 +59,17 @@ export class ReservationHostComponent  implements OnInit {
     }
     return true;
   }
-  CancelCount(reservation: Reservation) {
+ /* CancelCount(reservation: Reservation) {
     this.profilService.get(Number(reservation.guestId)).subscribe(response => {
       return response.cancelCount;
+    })}*/
+
+  CancelCount(guestId: any):number {
+    let count = 0;
+    this.profilService.get(guestId).subscribe(res => {
+      count = res.get().cancelCount;
     })
+    return count;
   }
+
 }

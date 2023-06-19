@@ -50,4 +50,9 @@ export class AccommodationService {
     console.error(err);
     return throwError(() => errorMessage);
   }
+
+  getByHostId(id: number): Observable<Accommodation[]> {
+    //dodaj u ocelot
+  return this.http.get<Accommodation[]>(this.apiHost + '/all', {headers: this.headers});
+}
 }

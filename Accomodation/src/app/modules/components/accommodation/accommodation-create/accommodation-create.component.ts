@@ -21,6 +21,8 @@ export class AccommodationCreateComponent implements OnInit {
     this.accommodationService.create(this.accommodation).subscribe({
         next: res => {
           console.log(res);
+          alert("created accommodation with id "+res.id)
+
         },
         error: err => {
           console.log(err);
