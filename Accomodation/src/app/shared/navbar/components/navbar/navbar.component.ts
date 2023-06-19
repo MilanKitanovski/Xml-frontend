@@ -5,6 +5,8 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../../core/auth/services/auth.service";
 import {User} from "../../../../core/auth/models/user";
 import {Register} from "../../../../core/auth/models/register";
+import {ProfileServiceTsService} from "../../../../core/services/profile-service.ts.service";
+import {TokenService} from "../../../../core/services/token.service";
 
 //import { AuthService } from 'src/app/core/auth/services/auth.service';
 
@@ -14,37 +16,45 @@ import {Register} from "../../../../core/auth/models/register";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  private userType: number = -1;
 
-  //private authService: AuthService, u konstruktor
   constructor(
     private http: HttpClient,
-    private router: Router) { }
+    private tokenService: TokenService,
+    private router: Router, private profileService: ProfileServiceTsService) {
+
+  }
   token = localStorage.getItem("token")
 
   ngOnInit(): void {
+this.id = Number(this.tokenService.getIdFromToken());this.profileService.get(this.id).subscribe({
+        next: res => {
+          this.userType = res.userType;
+        },
+        error: err => {
+          console.log(err);
+        }
+      }
+    ) ;
 
-    /* this.userSub = this.authService.user.subscribe(user =>{
-       this.isLogged = !!user
-       this.name = user.email
-     }); */
-  //  this.User =
- //   this.name = 'user.email';
   }
 
 //  private userSub: Subscription;
   isLogged: boolean = false
   isToggled: boolean= false
   name: string = ''
-  User: any;
-
+  User : any;
+  id: number = 0;
 
   isLoggedHost():boolean{
-    // if(this.LoggedHost!= name) return false
-    return true;
+    if (this.userType  == 0)return true;
+    else return false;
   }
+
+
   isLoggedGuest():boolean{
-    // if(this.LoggedGuest!= name) return false
-    return false;
+    if (this.userType  == 1)return true;
+    else return false;
   }
   ngOnDestroy(): void {
     //  this.userSub.unsubscribe();
@@ -66,12 +76,12 @@ export class NavbarComponent implements OnInit {
   }
 
   ReservationsHost() {
-    this.router.navigate(['/reservations/host/1'])
+    this.router.navigate(['/reservations/host/'+this.id])
 
   }
 
   ReservationsGuest() {
-    this.router.navigate(['/reservations/guest/1'])
+    this.router.navigate(['/reservations/guest/'+this.id])
   }
 
   Accommodations() {
@@ -80,11 +90,11 @@ export class NavbarComponent implements OnInit {
 
   AccommodationsHost() {
 
-    this.router.navigate(['/accommodations/host'])
+    this.router.navigate(['/accommodations/host/'+this.id])
   }
 
   Add() {
-    this.router.navigate(['/accommodations/create'])
+    this.router.navigate(['/accommodations/create/'+this.id])
 
   }
   //profile

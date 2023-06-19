@@ -16,11 +16,13 @@ import {RegisterComponent} from "./modules/pages/register/register.component";
 import { ProfileComponent } from './modules/components/profile/profile.component';
 import {FormsModule} from "@angular/forms";
 import {NavbarModule} from "./shared/navbar/navbar.module";
+import { UserInfoComponent } from './modules/components/profile/user-info/user-info.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ProfileComponent,
+        UserInfoComponent,
     ],
   imports: [
     BrowserModule,

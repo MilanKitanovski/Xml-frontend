@@ -33,12 +33,7 @@ public accommodations: Accommodation[] = [];
     this.accommodationService.getAll().subscribe(res => {
       this.accommodations = res;
       this.dataSource.data = this.accommodations;
-      /* this.user = this.authService.getUser();
-    this.getUserSubscription = this.authService.getUserObservable().subscribe({
-      next: (result) => {
-        this.user = result
-      }
-    })*/
+
     })
   }
 

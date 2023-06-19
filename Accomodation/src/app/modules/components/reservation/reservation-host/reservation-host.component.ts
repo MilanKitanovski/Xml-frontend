@@ -62,4 +62,7 @@ export class ReservationHostComponent  implements OnInit {
     return this.count;
   } */
 
+  chooseGuest(guestId: any) {
+    this.router.navigate(['/info', guestId]);
+  }
 }

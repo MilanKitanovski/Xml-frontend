@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.registerForm).subscribe({
       next: res => {
         console.log(res);
+        alert("successfully registered as GUEST with id:" +res.id);
       },
       error: err => {
         console.log(err);
@@ -33,6 +34,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.registerForm).subscribe({
       next: res => {
         console.log(res);
+        alert("successfully registered as HOST with id:" +res.id);
       },
       error: err => {
         console.log(err);
