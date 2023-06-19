@@ -19,6 +19,7 @@ export class ReservationTableComponent implements OnInit {
   public dataSource = new MatTableDataSource<Reservation>();
   public displayedColumns = ['id', 'accommodationId', 'guestId', 'startDate', 'endDate', 'numGuests', 'accepted', 'totalPrice', 'delete'];
   public reservations: Reservation[] = [];
+  cancelCount: any;
 
   constructor(private reservationService: ReservationService, private profileService: ProfileServiceTsService,
               private router: Router) { }
